@@ -1,0 +1,31 @@
+
+    .footer {
+        font-size: 1.5rem;
+        background-color: var(--secondary-bg-color);
+        color: var(--text-color-2);
+        padding: var(--size-11);
+        line-height: 2.5;
+    }
+
+    .gratitude {
+        width: 30%;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-link {
+        text-transform: unset;
+        color: var( --secondary-white);
+    }
+
+    .footer-link:hover {
+        border-bottom: 2px solid var(--accent-color);
+    }
+
+    .heroLogo{
+    font-size: 3rem;
+    font-family: 'Saira Condensed', sans-serif;
+}

@@ -1,0 +1,32 @@
+s (30 sloc)  761 Bytes
+
+:root {
+    --prime-blue: #1877f2;
+    --prime-blue-lt: #9DCAF7;
+    --secondary-white: #fefdff;
+    --accent-color: #14bdeb;
+    --accent-color-lt: #99E5FF;
+    --danger-color: #A50055;
+    --danger-color-lt: #F44336;
+    --warning-color: #FF9800;
+    --warning-color-lt: #FBF9C9;
+    --success-color: #4CAF50;
+    --success-color-lt: #9ADDCA;
+    --text-color : #131200;
+    --text-color-2: #8998a9;
+    --primary-bg-color: rgb(212, 212, 212);
+    --secondary-bg-color: #1f2937;
+    /*Size*/
+    --size-1: 0.25rem;
+    --size-2: 0.5rem;
+    --size-3: 0.75rem;
+    --size-4: 1rem;
+    --size-5: 1.25rem;
+    --size-6: 1.5rem;
+    --size-7: 1.75rem;
+    --size-8: 2rem;
+    --size-9: 2.25rem;
+    --size-10: 2.5rem;
+    --size-11: 2.75rem;
+    --size-12: 3rem;
+}
