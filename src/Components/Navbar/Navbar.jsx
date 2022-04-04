@@ -7,7 +7,7 @@ export  function Navbar  () {
         <div class="flex-center">
             <ion-icon class="ham-menu" name="menu-outline"></ion-icon>
             <div>
-                <Link to="/HomePage">
+                <Link to="/">
                     <h1 className="heroLogo">L-Suitify</h1>
                 </Link>
             </div>

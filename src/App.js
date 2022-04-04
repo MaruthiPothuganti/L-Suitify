@@ -10,7 +10,6 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/HomePage" element={<HomePage />} />
         <Route path="/ProductListing" element={<ProductListing />} />
         <Route path="/Wishlist" element={<Wishlist />} />
         <Route path="/Cart" element={<Cart />} />
