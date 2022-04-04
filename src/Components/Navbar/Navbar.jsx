@@ -14,7 +14,7 @@ export  function Navbar  () {
         </div>
         <div class="search-container flex-center">
             <input type="search" name="searchbar" class="searchbar" placeholder="Search..."/>
-                <button class="btn-search">
+                <button className="btn-search">
                    <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
         </div>
@@ -27,16 +27,19 @@ export  function Navbar  () {
                 </button>
             </Link>
            <Link to="/Cart">
-                <button class="badge">
+                <button className="badge">
                     <i class="fa-solid fa-bag-shopping"></i>
                      <span class="badge-notify">0</span>
                 </button>
 
             </Link>
             <Link to="/Login"  >
-                <button class="btn btn-primary">Login</button>
+                <button class="btn btn-primary">
+                    Login
+                </button>
+
             </Link>
-            <Link to="/Signup">
+            <Link to="/Signup" >
                 <button className="btn btn-ol-accent">Sign Up</button>
             </Link>
 
