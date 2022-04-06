@@ -1,4 +1,3 @@
-import { Navbar } from '../Components/Navbar/Navbar'
 import { Main} from '../Components/MainSection/MainSection'
 
 let HomePage = () => {

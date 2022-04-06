@@ -11,10 +11,10 @@ export function Footer ()  {
             <p> Matching style and class with luxury and comfort. </p>
             <div>
                 <p>©2021,  All rights Reserved.</p>
-                <p>Code by <a class="footer-link" href="https://maruthipothuganti.netlify.app" target="_blank">Maruthi Pothuganti</a></p>
+                <p>Code by <a className="footer-link" href="https://maruthipothuganti.netlify.app" target="_blank">Maruthi Pothuganti</a></p>
             </div>
             </div>
-            <div class="footer-links">
+            <div className="footer-links">
                 <h2>Categories</h2>
                 <ul>
                     <li className="footer-link">Tops</li>
@@ -24,7 +24,7 @@ export function Footer ()  {
                     <li className="footer-link">Miscellaneuos</li>
                 </ul>
         </div>
-        <div class="footer-links">
+        <div className="footer-links">
                 <h2>Account</h2>
                 <ul>
                     <li className="footer-link">My Account</li>
@@ -35,15 +35,15 @@ export function Footer ()  {
                 </ul>
             </div>
 
-            <div class="socials">
+            <div className="socials">
             <h2>Socials</h2>
                 <ul>
                     <li>
-                       <i class="fa-brands fa-github"></i><a className="footer-link" href="https://github.com/MaruthiPothuganti/" target="_blank">@MaruthiPothuganti</a></li>
+                       <i className="fa-brands fa-github"></i><a className="footer-link" href="https://github.com/MaruthiPothuganti/" target="_blank">@MaruthiPothuganti</a></li>
                     <li>
-                        <i class="fa-brands fa-linkedin"></i><a className="footer-link" href="https://www.linkedin.com/in/maruthi-pothuganti-3a8575179/" target="_blank">@maruthipothuganti</a></li>
+                        <i className="fa-brands fa-linkedin"></i><a className="footer-link" href="https://www.linkedin.com/in/maruthi-pothuganti-3a8575179/" target="_blank">@maruthipothuganti</a></li>
                     <li>
-                       <i class="fa-brands fa-twitter"></i><a className="footer-link" href="https://twitter.com/maruthithedev" target="_blank">@maruthithedev</a></li>
+                       <i className="fa-brands fa-twitter"></i><a className="footer-link" href="https://twitter.com/maruthithedev" target="_blank">@maruthithedev</a></li>
                 </ul>
 
             </div>

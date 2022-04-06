@@ -1,0 +1,13 @@
+
+.filterList{
+    padding: 3rem;
+    flex-basis: 250px;
+    min-width: 250px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+label{
+    font-size: 1.5rem;
+}
