@@ -1,5 +1,6 @@
 import "./mainsection.css";
 import { categories } from "../../Utils/helpers";
+import { Link } from 'react-router-dom';
 
 export function Main() {
 
@@ -9,7 +10,10 @@ export function Main() {
             <div className="heroTxtSection">
                 <h1 className="heroHeading">All You need to make an Entrance</h1>
                 <div>
-                    <button className="btn btn-accent">Shop Now</button>
+                    <Link to="/ProductListing">
+                        <button className="btn btn-accent">Shop Now</button>
+                    </Link>
+
                 </div>
             </div>
 
@@ -51,7 +55,7 @@ export function Main() {
                 <div className="bannerBtn flex-center">
                     <button className="btn btn-ol-accent">SHOP TOP</button>
                     <button className="btn btn-ol-accent">SHOP BOTTOMS</button>
-                    <button className="btn btn-ol-accent">SHOP DRESSES</button>
+                    <button className="btn btn-ol-accent">SHOP SUITS</button>
                 </div>
                 <p>Exclude jeans & other items. Price as market</p>
             </div>
