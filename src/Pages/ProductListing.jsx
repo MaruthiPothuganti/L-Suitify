@@ -1,4 +1,4 @@
-import Filters from "../Components/Filters/Filters";
+import { Filters } from "../Components/Filters/Filters";
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { ProductCard } from "../Molecules/ProductCard";

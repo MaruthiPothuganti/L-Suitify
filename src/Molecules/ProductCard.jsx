@@ -18,9 +18,10 @@ export let ProductCard = ({product}) => {
                         </button>
                         <button className="card-btn card-btn-secondary">Check Out <ion-icon name="arrow-forward-circle-outline"></ion-icon></button>
                     </div>
-                    <span className="btn-dismiss">
 
-                    </span>
+            {product.arrivedNewly && <span className="ribbon">NEW</span>}
+            {product.sale && <span className="ribbon">SALE</span>}
+
        </div>
     );
 }
