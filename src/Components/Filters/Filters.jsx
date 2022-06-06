@@ -1,9 +1,10 @@
 import './filters.css'
-import { useFilter } from '../../Contexts/ProductContext';
-// import { ACTION_TYPE } from '../../Utils/constants';
+import { ACTION_TYPE } from '../../Utils/constants';
+import { useFilter } from '../../Context/ProductContext';
 
 export const Filters = () => {
-    // const [filterState, filterDispatch] = useFilter();
+
+    const { filterState, filterDispatch } = useFilter();
 
     return (<aside className="filterList">
 
@@ -53,7 +54,8 @@ export const Filters = () => {
         <div className="padding-v-l">
             <h2 className="">Sort By</h2>
             <div className="category-pill padding-s">
-                <input type="radio" name="price-sort" id="price-sort-high" className="prod-category" />
+                <input type="radio" name="price-sort" id="price-sort-high" className="prod-category"
+                />
                 <label htmlFor="price-sort-high"> Price low to high</label>
             </div>
             <div className="category-pill padding-s">

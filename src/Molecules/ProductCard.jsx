@@ -1,6 +1,6 @@
 import './CSS/productcard.css'
 
-export let ProductCard = ({product}) => {
+export const ProductCard = ({product}) => {
     return (
             <div className="ecom-card">
                     <img className="ecom-img" src={product.imageURL} alt="suit" />
@@ -14,9 +14,9 @@ export let ProductCard = ({product}) => {
 
                     <div className="action-btns flex-center">
                         <button className="card-btn card-btn-primary">
-                            <i className="fa-solid fa-cart-circle-plus"></i>Add to cart
+                            Add to cart
                         </button>
-                        <button className="card-btn card-btn-secondary">Check Out <ion-icon name="arrow-forward-circle-outline"></ion-icon></button>
+                <button className="card-btn card-btn-secondary">To Wishlist</button>
                     </div>
 
             {product.arrivedNewly && <span className="ribbon">NEW</span>}

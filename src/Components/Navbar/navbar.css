@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-around;
     height: 10vh;
+    border-bottom: 1px solid;
 }
 
 .heroLogo{
