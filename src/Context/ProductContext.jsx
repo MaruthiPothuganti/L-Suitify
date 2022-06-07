@@ -2,11 +2,9 @@ import { createContext, useContext, useReducer, useEffect } from "react";
 import axios from 'axios'
 import { ACTION_TYPE } from "../Utils/constants";
 import { filterReducer } from "../Reducers/FilterReducer";
-
+import { initialFilterState } from "../Utils/helpers";
 
 const ProductFilterContext = createContext();
-
-
 
 const ProductContext = ({ children }) => {
     const { PRODUCTS } = ACTION_TYPE;
@@ -27,26 +25,13 @@ const ProductContext = ({ children }) => {
     }, [])
 
 
-
-    const initialFilterState = {
-        products:[],
-        categories: [],
-        filters: {
-            sortby: "",
-            rating: "",
-        }
-    }
-
     const [filterState, filterDispatch] = useReducer(filterReducer, initialFilterState)
 
     return (
-        <ProductFilterContext.Provider value={{filterState,filterDispatch}}>
+        <ProductFilterContext.Provider value={{filterState,filterDispatch, initialFilterState}}>
             {children}
         </ProductFilterContext.Provider>
-
     );
-
-
 }
 
 const useFilter = () => useContext(ProductFilterContext);

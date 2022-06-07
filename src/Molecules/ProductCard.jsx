@@ -5,7 +5,7 @@ export const ProductCard = ({product}) => {
             <div className="ecom-card">
                     <img className="ecom-img" src={product.imageURL} alt="suit" />
                 <h1 className="prod-title padding-m">{ product.title}</h1>
-                    <p className="seller padding-h-xl">Sold by italiano</p>
+            <p className="seller padding-h-xl">Sold by italiano  <span className='rating'>{product.rating}⭐</span></p>
                     <div className="ecom-price padding-l">
                         <span className=" sell-price">₹{product.discountedPrice}</span>
                         <span className="strike-price">₹{product.price}</span>

@@ -216,7 +216,7 @@ export const products = [
     sale: false
   },
 
-                  {
+   {
     _id: uuid(),
     title: "Velocity Pant Graphite",
     price: "650",
