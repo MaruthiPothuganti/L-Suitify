@@ -1,47 +1,32 @@
-import Filters from "../Components/Filters/Filters";
-import axios from 'axios';
-import { useState, useEffect } from "react";
+import { Filters } from "../Components/Filters/Filters";
 import { ProductCard } from "../Molecules/ProductCard";
+import { useFilter } from "../Context/ProductContext";
 import './CSS/Productlisting.css'
+import { sortProductsByCategory, sortProductsByPrice, sortProductsByRange, sortProductsByRating, sortProductsByStatus } from "../Utils/FilterFunctions";
 
 
 
-let ProductListing = () => {
-    const [products, setProducts] = useState([]);
-    const [error, setError] = useState();
-    const [loading, setLoading] = useState(false);
+const  ProductListing = () => {
+    const { filterState } = useFilter();
+    let { products, filters, categories, status } = filterState;
 
 
-    useEffect(() => {
-      (async () => {
-        setLoading(true);
-        setError();
+    const categorySortProducts = sortProductsByCategory(products, categories);
+    const rangeSortProducts = sortProductsByRange(categorySortProducts, filters.priceRange);
+    const priceSortProducts = sortProductsByPrice(rangeSortProducts, filters.sortby);
+    const rateSortProducts = sortProductsByRating(priceSortProducts, filters.rating)
+    const finalSortProducts = sortProductsByStatus(rateSortProducts, status)
 
-        try {
-            const resp = await axios.get('/api/products');
-            console.log(resp.data.products);
-            setProducts(resp.data.products);
-        } catch (error) {
-            setError(error);
-        } finally {
-            setLoading(false);
-        }
-    })()
-    }, [])
-
-    return <div className="products flex">
+    return (<div className="products flex">
         <Filters />
         <div className="product-listing">
-            <h2>{loading && " Loading..."}</h2>
                 <div className="product-container flex-row-spacearound">
-                         {products.map((product) =>
+                {finalSortProducts.map((product) =>
                              <ProductCard key={product.id} product={ product }/>
                          )}
                  </div>
         </div>
-
-
-    </div>
+    </div>)
 }
 
 
