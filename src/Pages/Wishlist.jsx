@@ -11,7 +11,7 @@ const Wishlist = () => {
     return (<div className='mainContainer'>
         <h1 className='text-center padding-m'>Wishlist</h1>
         <div className='flex-row-spacearound padding-l'>
-            {wishlist.map((product) =>
+            {wishlist.length>0? wishlist.map((product) =>
             <div className="ecom-card" key={product._id}>
                 <img className="ecom-img" src={product.imageURL} alt="suit" />
                 <h1 className="prod-title padding-m">{product.title}</h1>
@@ -44,7 +44,9 @@ const Wishlist = () => {
                 </div>
 
             </div>
-            )}
+            ) :
+                <img src="https://res.cloudinary.com/doo5jbomi/image/upload/v1655226082/Assets%20For%20Ecom/error%20and%20empty/empty_cart_fdjx2f.svg" alt="empty list" />
+            }
         </div>
     </div>)
 }

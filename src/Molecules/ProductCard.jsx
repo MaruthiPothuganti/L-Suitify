@@ -48,7 +48,7 @@ export const ProductCard = ({ product }) => {
 
                 <button className="card-btn card-btn-secondary"
                     onClick={wishlistHandler}
-                >{inWishlist?"Go to":"To Wishlist"}</button>
+                >{inWishlist?"Added ✅":"To Wishlist"}</button>
                     </div>
 
             {product.arrivedNewly && <span className="ribbon">NEW</span>}
