@@ -5,6 +5,7 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom';
 import { ProductContext } from "./Context/ProductContext";
 import { makeServer } from "./server";
+import { UserDataContext } from "./Context/UserDataContext";
 
 // Call make Server
 makeServer();
@@ -12,8 +13,10 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-        <ProductContext>
-          <App />
+       <ProductContext>
+          <UserDataContext>
+            <App />
+          </UserDataContext>
         </ProductContext>
       </BrowserRouter>
   </React.StrictMode>,

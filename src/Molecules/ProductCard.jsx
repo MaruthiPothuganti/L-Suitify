@@ -1,6 +1,30 @@
 import './CSS/productcard.css'
+import { useData } from '../Context/UserDataContext';
+import { ACTION_TYPE } from '../Utils/constants';
+import { useState } from 'react';
 
-export const ProductCard = ({product}) => {
+export const ProductCard = ({ product }) => {
+
+    const [inWishlist, setInWishlist] = useState(false);
+    const { userDataDispatch, userDataState } = useData();
+    const { cart, wishlist } = userDataState;
+    const { ADD_TO_CART, ADD_TO_WISHLIST } = ACTION_TYPE;
+
+
+    const wishlistHandler = () => {
+        if (wishlist.includes(product)) {
+            setInWishlist(true)
+        }
+        if (!wishlist.includes(product))
+        {
+            userDataDispatch({
+                type: ADD_TO_WISHLIST,
+                payload: product
+            })
+        }
+
+    }
+
     return (
             <div className="ecom-card">
                     <img className="ecom-img" src={product.imageURL} alt="suit" />
@@ -13,10 +37,18 @@ export const ProductCard = ({product}) => {
                     </div>
 
                     <div className="action-btns flex-center">
-                        <button className="card-btn card-btn-primary">
-                            Add to cart
-                        </button>
-                <button className="card-btn card-btn-secondary">To Wishlist</button>
+                <button className="card-btn card-btn-primary"
+                    onClick={() => {
+                        userDataDispatch({
+                            type: ADD_TO_CART,
+                            payload : product
+                        })
+                    }}
+                >Add to cart</button>
+
+                <button className="card-btn card-btn-secondary"
+                    onClick={wishlistHandler}
+                >{inWishlist?"Added ✅":"To Wishlist"}</button>
                     </div>
 
             {product.arrivedNewly && <span className="ribbon">NEW</span>}
