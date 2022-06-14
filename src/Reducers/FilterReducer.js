@@ -1,4 +1,3 @@
-import { useFilter } from "../Context/ProductContext";
 import { ACTION_TYPE } from "../Utils/constants";
 import { initialFilterState } from "../Utils/helpers";
 

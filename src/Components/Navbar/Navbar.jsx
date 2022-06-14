@@ -1,8 +1,12 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import { useData } from "../../Context/UserDataContext";
 
 
-export  function Navbar  () {
+export function Navbar() {
+    const { userDataState } = useData();
+    const { cart, wishlist } = userDataState;
+
     return <nav className="ecom-navbar">
         <div className="flex-center">
             <ion-icon className="ham-menu" name="menu-outline"></ion-icon>
@@ -23,13 +27,13 @@ export  function Navbar  () {
             <Link to="/Wishlist">
                 <button className="badge">
                     <i className="fa-solid fa-heart"></i>
-                     <span className="badge-notify">0</span>
+                    <span className="badge-notify">{ wishlist.length }</span>
                 </button>
             </Link>
            <Link to="/Cart">
                 <button className="badge">
                     <i className="fa-solid fa-bag-shopping"></i>
-                     <span className="badge-notify">0</span>
+                    <span className="badge-notify">{cart.length}</span>
                 </button>
 
             </Link>

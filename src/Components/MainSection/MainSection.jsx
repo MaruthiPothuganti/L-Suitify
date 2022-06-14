@@ -20,8 +20,8 @@ export function Main() {
         </div>
           <div className="heroBrands flex-row-spacearound">
                     {
-                        categories.map((logo) => {
-                            return  <div className="brandNameCategory">
+                        categories.map((logo, index) => {
+                            return  <div className="brandNameCategory" key={index}>
                                          <img src={logo} alt="brandName" />
                                     </div>
                         })

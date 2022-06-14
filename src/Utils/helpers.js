@@ -18,3 +18,8 @@ export const initialFilterState = {
             priceRange: 10000
         }
     }
+
+export const userDataInitialState = {
+        cart: [],
+        wishlist:[]
+    }
