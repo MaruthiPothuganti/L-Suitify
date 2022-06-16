@@ -18,7 +18,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087557/Assets%20For%20Ecom/Jackets/1602531083-mos-flats-men-s-kinetic-blazer-slate-grey_fangod.jpg",
     brandName: "Kinetic",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 4.5,
     arrivedNewly: true,
     sale: false
@@ -34,7 +34,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087557/Assets%20For%20Ecom/Jackets/1602680985-mos-flats-men-s-velocity-blazer-dark-navy_jxyoaf.jpg",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 4.5,
     arrivedNewly: false,
     sale: false
@@ -50,7 +50,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087557/Assets%20For%20Ecom/Jackets/1623782770-mos-flats-men-s-velocity-merino-blazer-black-wool_pyfkhl.jpg",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 2.7,
     arrivedNewly: true,
     sale: true
@@ -66,7 +66,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087557/Assets%20For%20Ecom/Jackets/1602307944-mos-flats-men-s-velocity-blazer-charcoal_af5iww.jpg",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 2.5,
     arrivedNewly: true,
     sale: false
@@ -82,7 +82,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087557/Assets%20For%20Ecom/Jackets/1602531121-mos-flats-men-s-velocity-blazer-black_vr8gdr.jpg",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 1.9,
     arrivedNewly: true,
     sale: false
@@ -98,7 +98,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087557/Assets%20For%20Ecom/Jackets/1602300390-mos-flats-men-s-velocity-blazer-blue-houndstooth_f3eh5j.jpg",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 1.7,
     arrivedNewly: true,
     sale: true
@@ -114,7 +114,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087556/Assets%20For%20Ecom/Jackets/1602105143-mos-flats-men-s-velocity-blazer-indigo-heather_vrrqyn.jpg",
     brandName: "Kinetic",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 4.0,
     arrivedNewly: true,
     sale: false
@@ -130,7 +130,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087556/Assets%20For%20Ecom/Jackets/1602105143-mos-flats-men-s-velocity-blazer-indigo-heather_vrrqyn.jpg",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 4.5,
     arrivedNewly: false,
     sale: false
@@ -146,7 +146,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087556/Assets%20For%20Ecom/Jackets/1602104992-mos-flats-men-s-kinetic-blazer-indigo-heather_gwad6m.jpg",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.2,
     arrivedNewly: false,
     sale: false
@@ -162,7 +162,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087556/Assets%20For%20Ecom/Jackets/1602105000-mos-flats-men-s-kinetic-blazer-navy_eyqise.jpg",
     brandName: "Kinetic",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.4,
     arrivedNewly: true,
     sale: false
@@ -178,7 +178,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087556/Assets%20For%20Ecom/Jackets/1602104974-mos-flats-men-s-kinetic-blazer-charcoal-heather_mdbyff.jpg",
     brandName: "Kinetic",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 4.7,
     arrivedNewly: false,
     sale: false
@@ -194,7 +194,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649087556/Assets%20For%20Ecom/Jackets/1602104965-mos-flats-men-s-kinetic-blazer-black_wmzx0w.jpg",
     brandName: "Kinetic",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.5,
     arrivedNewly: true,
     sale: false
@@ -210,7 +210,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1648621416/Assets%20For%20Ecom/Trousers/1611698189-mos-flats-men-s-velocity-pant-graphite_1_dr3sdd.webp",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 4.0,
     arrivedNewly: false,
     sale: false
@@ -227,7 +227,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1648621416/Assets%20For%20Ecom/Trousers/1611698189-mos-flats-men-s-velocity-pant-graphite_tafe2v.jpg",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.6,
     arrivedNewly: false,
     sale: false
@@ -244,7 +244,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1648621415/Assets%20For%20Ecom/Trousers/1574959815-mos-mens-velocity-suit-pant-charcoal-4_1_flcuxb.webp",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 2.9,
     arrivedNewly: false,
     sale: true
@@ -260,7 +260,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1648621415/Assets%20For%20Ecom/Trousers/1604070815-mos-mens-kinetic-adaptive-pant-black-1_jy0tpw.jpg",
     brandName: "Kinetic",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 2.5,
     arrivedNewly: true,
     sale: false
@@ -276,7 +276,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1648621415/Assets%20For%20Ecom/Trousers/1603821205-mos-mens-kinetic-adaptive-pant-navy-1_dsbgdg.jpg",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.0,
     arrivedNewly: false,
     sale: false
@@ -292,7 +292,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1648621415/Assets%20For%20Ecom/Trousers/1603821205-mos-mens-kinetic-adaptive-pant-navy-1_1_hshha6.webp",
     brandName: "Kinetic",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.2,
     arrivedNewly: true,
     sale: true
@@ -308,7 +308,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649101463/Assets%20For%20Ecom/Suits/eph_the-valencia-suit_feature_myrqwy.jpg",
     brandName: "Suit",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.7,
     arrivedNewly: false,
     sale: true
@@ -324,7 +324,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649101462/Assets%20For%20Ecom/Suits/eph_the-true-blue-suit_feature_i1kupx.jpg",
     brandName: "Suit",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.4,
     arrivedNewly: true,
     sale: false
@@ -340,7 +340,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649101462/Assets%20For%20Ecom/Suits/eph_the-smithsonian-suit_feature_nd570q.jpg",
     brandName: "Suit",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.6,
     arrivedNewly: false,
     sale: false
@@ -356,7 +356,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649101461/Assets%20For%20Ecom/Suits/eph_the-sage-silk-herringbone-suit_feature_esnedo.jpg",
     brandName: "Suit",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.5,
     arrivedNewly: true,
     sale: false
@@ -372,7 +372,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649101459/Assets%20For%20Ecom/Suits/eph_the-Polo-Windowpane_Feature_sofvkr.jpg",
     brandName: "Suit",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 3.9,
     arrivedNewly: false,
     sale: true
@@ -388,7 +388,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649101462/Assets%20For%20Ecom/Suits/eph_the-true-blue-suit_feature_i1kupx.jpg",
     brandName: "Suit",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 4.3,
     arrivedNewly: false,
     sale: false
@@ -404,7 +404,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649101453/Assets%20For%20Ecom/Suits/eph_the-granite-grey-suit_feature_lacdtk.jpg",
     brandName: "Suit",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 4,
     arrivedNewly: false,
     sale: false
@@ -419,7 +419,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1648621415/Assets%20For%20Ecom/Trousers/1608058643-mos-mens-velocity-suit-pant-azurite-heather-1_cwzpb2.jpg",
     brandName: "Velocity",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 2.7,
     arrivedNewly: true,
     sale: false
@@ -435,7 +435,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649101450/Assets%20For%20Ecom/Suits/eph_the-charcoal-microcheck_feature_u8rcb7.jpg",
     brandName: "Suit",
     offer: 100,
-    quantity: 0,
+    quantity: 1,
     rating: 1.9,
     arrivedNewly: true,
     sale: false
@@ -451,7 +451,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649101446/Assets%20For%20Ecom/Suits/eph_the-bridgeport-blue-suit_feature_drp0q8.jpg",
     brandName: "Suit",
     offer: 2000,
-    quantity: 0,
+    quantity: 1,
     rating: 4,
     arrivedNewly: false,
     sale: false
@@ -467,7 +467,7 @@ export const products = [
     imageURL: "https://res.cloudinary.com/doo5jbomi/image/upload/v1649101445/Assets%20For%20Ecom/Suits/Eph_teal-nano-two-piece_feature_o9qwja.jpg",
     brandName: "Suit",
     offer: 1000,
-    quantity: 0,
+    quantity: 1,
     rating: 4.5,
     arrivedNewly: false,
     sale: true
