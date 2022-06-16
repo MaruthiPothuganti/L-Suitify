@@ -30,10 +30,24 @@ export const dataReducer = (state, action) => {
             };
 
         case INCREMENT:
+            console.log("prod", action.payload);
             return {
-                ...state, cart: [...state.cart.map((prod) => {
-                console.log("prod",prod)
-            })]}
+                ...state, cart: state.cart.map((prod) => {
+                    if (prod._id === action.payload._id) {
+                        return {...prod, quantity :prod.quantity+1}
+                    }
+                })
+            }
+
+        case DECREMENT:
+            console.log("prod", action.payload);
+            return {
+                ...state, cart: state.cart.map((prod) => {
+                    if (prod._id === action.payload._id && prod.quantity>1) {
+                        return {...prod, quantity :prod.quantity-1}
+                    }
+                })
+            }
 
         default:
             return userDataInitialState;
