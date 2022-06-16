@@ -1,0 +1,24 @@
+.card {
+	border: 1px solid var(--bg-one);
+	display: flex;
+	border-radius: 10px;
+	width: 50rem;
+}
+
+.ecom-img {
+	border-radius: 10px;
+	width: auto !important;
+}
+
+.desc{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.productCount{
+	width: 5rem;
+	text-align: center;
+	font-weight: bolder;
+}
