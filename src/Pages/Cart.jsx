@@ -97,33 +97,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-{
-  /* <div className="card">
-  <img
-    className="ecom-img"
-    src="https://res.cloudinary.com/doo5jbomi/image/upload/v1649101458/Assets%20For%20Ecom/Suits/eph_the-navy-shadow-gingham-suit_feature_hvcj74.jpg"
-    alt="suit"
-  />
-  <div className="desc">
-    <h1 className="prod-title padding-m">Title</h1>
-    <p className="seller padding-h-xl">
-      Sold by italiano <span className="rating">5⭐</span>
-    </p>
-    <div className="ecom-price padding-l">
-      <span className=" sell-price">₹300</span>
-      <span className="strike-price">₹200</span>
-      <span className="ecom-disc">Save ₹100</span>
-    </div>
-    <div className="padding-h-l">
-      <button className="btn">-</button>
-      <input type="number" className="productCount" />
-      <button className="btn">+</button>
-    </div>
-    <div className="action-btns flex-center">
-      <button className="btn btn-primary">Move to Wishlist</button>
-      <button className="btn btn-secondary">Remove from cart</button>
-    </div>
-  </div>
-</div>; */
-}
