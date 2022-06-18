@@ -30,14 +30,16 @@ export const filterReducer = (state, action) => {
                     : [...state.categories, action.payload]
             };
 
-         case STATUS: return {
+        case STATUS:
+            return {
             ...state,
                 status: state.status.includes(action.payload)
                     ? state.status.filter((el) => el !== action.payload)
                     : [...state.status, action.payload]
         };
 
-        case CLEAR: return {
+        case CLEAR:
+            return {
             ...state, categories:[], status:[], filters: initialFilterState.filters
         };
 

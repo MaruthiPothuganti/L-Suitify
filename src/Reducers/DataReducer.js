@@ -36,6 +36,7 @@ export const dataReducer = (state, action) => {
                     if (prod._id === action.payload._id) {
                         return {...prod, quantity :prod.quantity+1}
                     }
+                    return prod;
                 })
             }
 
@@ -46,6 +47,7 @@ export const dataReducer = (state, action) => {
                     if (prod._id === action.payload._id && prod.quantity>1) {
                         return {...prod, quantity :prod.quantity-1}
                     }
+                    return prod;
                 })
             }
 
