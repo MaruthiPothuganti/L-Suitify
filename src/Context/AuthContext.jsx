@@ -1,17 +1,12 @@
 import { useContext, createContext, useReducer } from "react";
 import { userDetailsReducer } from "../Reducers/UserDetailsReducer";
-
+import { initialAuthState } from "../Utils/helpers";
 const AuthorisationContext = createContext();
-const initialState = {
-  token: "",
-  name: "",
-  email: "",
-  password: "",
-};
+
 const AuthContext = ({ children }) => {
   const [userAuthState, dispatchUserAuth] = useReducer(
     userDetailsReducer,
-    initialState
+    initialAuthState
   );
 
   return (

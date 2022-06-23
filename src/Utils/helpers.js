@@ -23,3 +23,11 @@ export const userDataInitialState = {
         cart: [],
         wishlist:[]
     }
+
+export const initialAuthState = {
+    token: "",
+    isAuthenticated: false,
+    name: "",
+    email: "",
+    password: "",
+};

@@ -1,12 +1,18 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./CSS/login.css";
 import { useAuth } from "../Context/AuthContext";
+import { ACTION_TYPE } from "../Utils/constants";
 
 export default function Login() {
-  const { userAuthState, dispatchUserAuth } = useAuth();
+  const { dispatchUserAuth } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  const { LOGIN } = ACTION_TYPE;
   const initialCredentialState = {
+    name: "",
     email: "",
     password: "",
   };
@@ -15,6 +21,7 @@ export default function Login() {
 
   const testLoginHandler = () => {
     setCredentials({
+      name: "test",
       email: "testuser@gmail.com",
       password: "Testuser123",
     });
@@ -30,13 +37,20 @@ export default function Login() {
     try {
       const loginResp = await axios.request({
         method: "post",
-        url: " /api/auth/login",
-        data: credentials,
+        url: "/api/auth/login",
+        data: {
+          email: credentials.email,
+          password: credentials.password,
+        },
       });
       if (loginResp.status === 200) {
-        localStorage.setItem("encodedToken", loginResp.data.encodedToken);
+        dispatchUserAuth({
+          type: LOGIN,
+          payload: loginResp,
+        });
+
+        navigate(from, { replace: true });
       }
-      console.log(loginResp);
     } catch (error) {
       console.log(error);
     }

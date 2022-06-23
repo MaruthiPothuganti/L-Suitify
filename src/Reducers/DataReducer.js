@@ -3,7 +3,7 @@ import { userDataInitialState } from "../Utils/helpers";
 
 export const dataReducer = (state, action) => {
 
-    const { ADD_TO_CART,ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST,REMOVE_FROM_CART, INCREMENT, DECREMENT, MOVE_TO_WISHLIST, MOVE_TO_CART} = ACTION_TYPE;
+    const { ADD_TO_CART,ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST,REMOVE_FROM_CART, INCREMENT, DECREMENT, MOVE_TO_WISHLIST, MOVE_TO_CART, LOGOUT} = ACTION_TYPE;
 
     switch (action.type) {
         case ADD_TO_CART:
@@ -50,7 +50,8 @@ export const dataReducer = (state, action) => {
                     return prod;
                 })
             }
-
+        case LOGOUT:
+            return userDataInitialState;
         default:
             return userDataInitialState;
     }
