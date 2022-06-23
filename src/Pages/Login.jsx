@@ -33,7 +33,6 @@ export default function Login() {
   };
 
   const loginHandler = async () => {
-    console.log(credentials);
     try {
       const loginResp = await axios.request({
         method: "post",
