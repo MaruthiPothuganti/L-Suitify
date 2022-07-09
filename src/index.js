@@ -4,8 +4,10 @@ import App from "./App";
 import './index.css'
 import { BrowserRouter } from 'react-router-dom';
 import { ProductContext } from "./Context/ProductContext";
-import { makeServer } from "./server";
 import { UserDataContext } from "./Context/UserDataContext";
+import { AuthContext } from "./Context/AuthContext";
+import { makeServer } from "./server";
+
 
 // Call make Server
 makeServer();
@@ -13,11 +15,13 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+      <AuthContext>
        <ProductContext>
           <UserDataContext>
             <App />
           </UserDataContext>
         </ProductContext>
+        </AuthContext>
       </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

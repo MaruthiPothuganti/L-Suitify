@@ -1,0 +1,27 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    height: 60vh;
+}
+.formContainer{
+    width: 45rem;
+    min-width: 35rem
+}
+.form-fields{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+form div input {
+    border: 1px solid;
+    height: 4rem;
+    padding: 0.5rem;
+}
+
+.txt-highlight{
+	color: var( --accent-color);
+}
+
