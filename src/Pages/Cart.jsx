@@ -1,14 +1,8 @@
 import "./CSS/cart.css";
-import { useData } from "../Context/UserDataContext";
-import { ACTION_TYPE } from "../Utils/constants";
+import { useCart } from "../Context/CartContext";
 
 const Cart = () => {
-  const { userDataState, userDataDispatch } = useData();
-  const { cart } = userDataState;
-  const { INCREMENT, DECREMENT, REMOVE_FROM_CART, MOVE_TO_WISHLIST } =
-    ACTION_TYPE;
-
-  console.log("cart", cart);
+  const { cart } = useCart();
 
   return (
     <div className="mainContainer">
@@ -30,15 +24,7 @@ const Cart = () => {
                   <span className="ecom-disc">Save ₹{prod.offer}</span>
                 </div>
                 <div className="padding-h-l">
-                  <button
-                    className="btn"
-                    onClick={() => {
-                      userDataDispatch({
-                        type: DECREMENT,
-                        payload: prod,
-                      });
-                    }}
-                  >
+                  <button className="btn" onClick={() => {}}>
                     -
                   </button>
                   <input
@@ -46,39 +32,15 @@ const Cart = () => {
                     className="productCount"
                     defaultValue={prod.quantity}
                   />
-                  <button
-                    className="btn"
-                    onClick={() => {
-                      userDataDispatch({
-                        type: INCREMENT,
-                        payload: prod,
-                      });
-                    }}
-                  >
+                  <button className="btn" onClick={() => {}}>
                     +
                   </button>
                 </div>
                 <div className="action-btns flex-center">
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      userDataDispatch({
-                        type: MOVE_TO_WISHLIST,
-                        payload: prod,
-                      });
-                    }}
-                  >
+                  <button className="btn btn-primary" onClick={() => {}}>
                     Move to Wishlist
                   </button>
-                  <button
-                    className="btn btn-secondary"
-                    onClick={() => {
-                      userDataDispatch({
-                        type: REMOVE_FROM_CART,
-                        payload: prod,
-                      });
-                    }}
-                  >
+                  <button className="btn btn-secondary" onClick={() => {}}>
                     Remove from cart
                   </button>
                 </div>

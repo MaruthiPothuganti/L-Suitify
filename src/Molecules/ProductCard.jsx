@@ -1,33 +1,21 @@
 import "./CSS/productcard.css";
 import { useNavigate } from "react-router-dom";
-import { useData } from "../Context/UserDataContext";
-import { ACTION_TYPE } from "../Utils/constants";
-import { useState } from "react";
 import { useAuth } from "../Context/AuthContext";
+import { useWishlist } from "../Context/WishlistContext";
+import { useCart } from "../Context/CartContext";
 
 export const ProductCard = ({ product }) => {
-  const [inWishlist, setInWishlist] = useState(false);
   const navigate = useNavigate();
-  const { userDataDispatch, userDataState } = useData();
-  const { wishlist } = userDataState;
   const { userAuthState } = useAuth();
   const { isAuthenticated } = userAuthState;
-  const { ADD_TO_CART, ADD_TO_WISHLIST } = ACTION_TYPE;
-
+  const { addToWishlist } = useWishlist();
+  const { addToCart } = useCart();
   const wishlistHandler = () => {
     if (!isAuthenticated) {
       navigate("/Login", { replace: true });
     }
     if (isAuthenticated) {
-      if (wishlist.includes(product)) {
-        setInWishlist(true);
-      }
-      if (!wishlist.includes(product)) {
-        userDataDispatch({
-          type: ADD_TO_WISHLIST,
-          payload: product,
-        });
-      }
+      addToWishlist();
     }
   };
 
@@ -36,10 +24,7 @@ export const ProductCard = ({ product }) => {
       navigate("/Login", { replace: true });
     }
     if (isAuthenticated) {
-      userDataDispatch({
-        type: ADD_TO_CART,
-        payload: product,
-      });
+      addToCart();
     }
   };
 
@@ -65,7 +50,7 @@ export const ProductCard = ({ product }) => {
           className="card-btn card-btn-secondary"
           onClick={wishlistHandler}
         >
-          {inWishlist ? "Added ✅" : "To Wishlist"}
+          To Wishlist
         </button>
       </div>
 

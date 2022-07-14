@@ -1,11 +1,7 @@
-import { useData } from "../Context/UserDataContext";
-import { ACTION_TYPE } from "../Utils/constants";
+import { useWishlist } from "../Context/WishlistContext";
 
 const Wishlist = () => {
-  const { userDataState, userDataDispatch } = useData();
-  const { wishlist } = userDataState;
-  const { REMOVE_FROM_WISHLIST, MOVE_TO_CART } = ACTION_TYPE;
-
+  const { wishlist } = useWishlist();
   return (
     <div className="mainContainer">
       <h1 className="text-center padding-m">Wishlist</h1>
@@ -32,23 +28,13 @@ const Wishlist = () => {
               <div className="action-btns flex-center">
                 <button
                   className="card-btn card-btn-primary"
-                  onClick={() => {
-                    userDataDispatch({
-                      type: MOVE_TO_CART,
-                      payload: product,
-                    });
-                  }}
+                  onClick={() => {}}
                 >
                   Add to cart
                 </button>
                 <button
                   className="card-btn card-btn-secondary"
-                  onClick={() => {
-                    userDataDispatch({
-                      type: REMOVE_FROM_WISHLIST,
-                      payload: product,
-                    });
-                  }}
+                  onClick={() => {}}
                 >
                   Remove
                 </button>
