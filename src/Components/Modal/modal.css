@@ -8,13 +8,16 @@
 }
 
 .modal-main {
+  display: flex;
+  flex-direction: column;
   position:fixed;
   background: white;
-  width: 80%;
+  width: 60%;
   height: auto;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+  padding: 2rem;
 }
 
 .display-block {
@@ -23,4 +26,10 @@
 
 .display-none {
   display: none;
+}
+
+.btnGroup{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
 }

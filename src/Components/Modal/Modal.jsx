@@ -7,9 +7,14 @@ export function Modal({ handleClose, show, children }) {
     <div className={showHideClassName}>
       <section className="modal-main">
         {children}
-        <button type="button" onClick={handleClose}>
-          Close
-        </button>
+        <div className="btnGroup">
+          <button className="btn-ol-primary" onClick={handleClose}>
+            Apply
+          </button>
+          <button className="btn-primary" onClick={handleClose}>
+            Close
+          </button>
+        </div>
       </section>
     </div>
   );
