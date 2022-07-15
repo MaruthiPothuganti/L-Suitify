@@ -1,3 +1,9 @@
+.cartAndSummary{
+	display: flex;
+	margin: 1rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 .card {
 	border: 1px solid var(--bg-one);
 	display: flex;
@@ -22,3 +28,37 @@
 	padding: 1rem;
 }
 
+.productContainer{
+	height: 80vh;
+	width: 100%;
+}
+
+.cartContainer{
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: 50%;
+	min-width: 60rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.cartSummary{
+	width: 50%;
+	min-width: 300px;
+	height: auto;
+	font-size: 1.5rem;
+
+}
+
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 2rem;
+}
+
+.orderBtn{
+	display: flex;
+	justify-content: space-between;
+}

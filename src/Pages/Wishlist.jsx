@@ -53,10 +53,12 @@ const Wishlist = () => {
             </div>
           ))
         ) : (
-          <img
-            src="https://res.cloudinary.com/doo5jbomi/image/upload/v1655226082/Assets%20For%20Ecom/error%20and%20empty/empty_cart_fdjx2f.svg"
-            alt="empty list"
-          />
+          <div className="flex-column-center productContainer">
+            <h2>No Products here. Go and Wish some</h2>
+            <button>
+              <Link to="/ProductListing">Add Products</Link>
+            </button>
+          </div>
         )}
       </div>
     </div>

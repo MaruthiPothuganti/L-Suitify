@@ -57,9 +57,27 @@ const CartListContext = ({ children }) => {
     });
   };
 
+  let totalOrderPrice = cart.reduce(
+    (acc, curr) => acc + Number(curr.discountedPrice) * curr.qty,
+    0
+  );
+  console.log("totalOrderPrice", totalOrderPrice);
+
+  let savedAmount = cart.reduce(
+    (acc, curr) => acc + Number(curr.offer) * curr.qty,
+    0
+  );
+  console.log("savedAmount", savedAmount);
+
   return (
     <CartContext.Provider
-      value={{ cart, loading, addToCart, removeFromCart, updateCart }}
+      value={{
+        cart,
+        loading,
+        addToCart,
+        removeFromCart,
+        updateCart,
+      }}
     >
       {children}
     </CartContext.Provider>
