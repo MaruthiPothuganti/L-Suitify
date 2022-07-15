@@ -48,14 +48,12 @@ const CartListContext = ({ children }) => {
     });
   };
 
-  const updateCart = (product, type) => {
+  const updateCart = (product, operation) => {
     fireRequest({
       method: "post",
       url: `/api/user/cart/${product._id}`,
       headers: { authorization: token },
-      action: {
-        type: type,
-      },
+      data: { action: { type: operation } },
     });
   };
 

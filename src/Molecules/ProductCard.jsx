@@ -1,5 +1,5 @@
 import "./CSS/productcard.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 import { useWishlist } from "../Context/WishlistContext";
 import { useCart } from "../Context/CartContext";
@@ -45,7 +45,9 @@ export const ProductCard = ({ product }) => {
 
       <div className="action-btns flex-center">
         {isItemInList(product, cart) ? (
-          <button className="card-btn card-btn-primary">Go to cart</button>
+          <button className="card-btn card-btn-primary">
+            <Link to="/cart">Go to cart</Link>
+          </button>
         ) : (
           <button className="card-btn card-btn-primary" onClick={cartHandler}>
             Add to cart

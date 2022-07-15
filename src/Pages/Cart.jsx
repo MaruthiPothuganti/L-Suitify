@@ -5,7 +5,7 @@ import { isItemInList } from "../Utils/helpers";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, updateCart } = useCart();
   const { wishlist, addToWishlist } = useWishlist();
 
   return (
@@ -19,7 +19,7 @@ const Cart = () => {
               <div className="desc">
                 <h1 className="prod-title padding-m">{prod.title}</h1>
                 <p className="seller padding-h-xl">
-                  Sold by italiano{" "}
+                  Sold by italiano
                   <span className="rating">{prod.rating}⭐</span>
                 </p>
                 <div className="ecom-price padding-l">
@@ -28,11 +28,21 @@ const Cart = () => {
                   <span className="ecom-disc">Save ₹{prod.offer}</span>
                 </div>
                 <div className="padding-h-l">
-                  <button className="btn" onClick={() => {}}>
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      updateCart(prod, "decrement");
+                    }}
+                  >
                     -
                   </button>
                   <span className="productCount">{prod.qty}</span>
-                  <button className="btn" onClick={() => {}}>
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      updateCart(prod, "increment");
+                    }}
+                  >
                     +
                   </button>
                 </div>

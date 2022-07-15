@@ -7,10 +7,6 @@ const Wishlist = () => {
   const { wishlist, removeFromWishlist } = useWishlist();
   const { cart, addToCart } = useCart();
 
-  const cartHandler = (product) => {
-    addToCart(product);
-  };
-
   return (
     <div className="mainContainer">
       <h1 className="text-center padding-m">Wishlist</h1>
@@ -42,7 +38,7 @@ const Wishlist = () => {
                 ) : (
                   <button
                     className="card-btn card-btn-primary"
-                    onClick={() => cartHandler()}
+                    onClick={() => addToCart(product)}
                   >
                     Add to cart
                   </button>
