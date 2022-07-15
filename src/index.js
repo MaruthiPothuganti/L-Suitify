@@ -17,13 +17,13 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContext>
-        <CartListContext>
         <WishlistContext>
+          <CartListContext>
             <ProductContext>
               <App />
             </ProductContext>
+            </CartListContext>
           </WishlistContext>
-          </CartListContext>
         </AuthContext>
       </BrowserRouter>
   </React.StrictMode>,

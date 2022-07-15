@@ -18,7 +18,6 @@ const CartListContext = ({ children }) => {
 
   useEffect(() => {
     if (response) {
-      console.log("cart", response.cart);
       const newList = response.cart;
       setCart(newList);
     }

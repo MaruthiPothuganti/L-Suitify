@@ -21,7 +21,6 @@ const WishlistContext = ({ children }) => {
 
   useEffect(() => {
     if (response) {
-      console.log("wishlist", response.wishlist);
       const newList = response.wishlist;
       setWishlist(newList);
     }

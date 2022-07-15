@@ -1,6 +1,8 @@
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
+import { useWishlist } from "../../Context/WishlistContext";
+import { useCart } from "../../Context/CartContext";
 import { ACTION_TYPE } from "../../Utils/constants";
 
 export function Navbar() {
@@ -8,6 +10,8 @@ export function Navbar() {
   const { userAuthState, dispatchUserAuth } = useAuth();
   const { isAuthenticated } = userAuthState;
   const { LOGOUT } = ACTION_TYPE;
+  const { wishlist } = useWishlist();
+  const { cart } = useCart();
 
   const logoutHandler = () => {
     dispatchUserAuth({
@@ -43,13 +47,13 @@ export function Navbar() {
         <Link to="/Wishlist">
           <button className="badge">
             <i className="fa-solid fa-heart"></i>
-            <span className="badge-notify">0</span>
+            <span className="badge-notify">{wishlist.length}</span>
           </button>
         </Link>
         <Link to="/Cart">
           <button className="badge">
             <i className="fa-solid fa-bag-shopping"></i>
-            <span className="badge-notify">0</span>
+            <span className="badge-notify">{cart.length}</span>
           </button>
         </Link>
         {isAuthenticated ? (

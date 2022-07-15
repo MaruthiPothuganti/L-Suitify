@@ -3,19 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 import { useWishlist } from "../Context/WishlistContext";
 import { useCart } from "../Context/CartContext";
+import { isItemInList } from "../Utils/helpers";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const { userAuthState } = useAuth();
   const { isAuthenticated } = userAuthState;
-  const { addToWishlist } = useWishlist();
-  const { addToCart } = useCart();
+  const { addToWishlist, wishlist, removeFromWishlist } = useWishlist();
+  const { addToCart, cart } = useCart();
+
   const wishlistHandler = () => {
     if (!isAuthenticated) {
       navigate("/Login", { replace: true });
     }
     if (isAuthenticated) {
-      addToWishlist();
+      addToWishlist(product);
     }
   };
 
@@ -24,7 +26,7 @@ export const ProductCard = ({ product }) => {
       navigate("/Login", { replace: true });
     }
     if (isAuthenticated) {
-      addToCart();
+      addToCart(product);
     }
   };
 
@@ -42,16 +44,28 @@ export const ProductCard = ({ product }) => {
       </div>
 
       <div className="action-btns flex-center">
-        <button className="card-btn card-btn-primary" onClick={cartHandler}>
-          Add to cart
-        </button>
-
-        <button
-          className="card-btn card-btn-secondary"
-          onClick={wishlistHandler}
-        >
-          To Wishlist
-        </button>
+        {isItemInList(product, cart) ? (
+          <button className="card-btn card-btn-primary">Go to cart</button>
+        ) : (
+          <button className="card-btn card-btn-primary" onClick={cartHandler}>
+            Add to cart
+          </button>
+        )}
+        {isItemInList(product, wishlist) ? (
+          <button
+            className="card-btn card-btn-secondary"
+            onClick={() => removeFromWishlist(product)}
+          >
+            UnWish
+          </button>
+        ) : (
+          <button
+            className="card-btn card-btn-secondary"
+            onClick={wishlistHandler}
+          >
+            Wish it
+          </button>
+        )}
       </div>
 
       {product.arrivedNewly && <span className="ribbon">NEW</span>}

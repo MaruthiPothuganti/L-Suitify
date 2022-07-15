@@ -1,7 +1,16 @@
+import { Link } from "react-router-dom";
 import { useWishlist } from "../Context/WishlistContext";
+import { useCart } from "../Context/CartContext";
+import { isItemInList } from "../Utils/helpers";
 
 const Wishlist = () => {
-  const { wishlist } = useWishlist();
+  const { wishlist, removeFromWishlist } = useWishlist();
+  const { cart, addToCart } = useCart();
+
+  const cartHandler = (product) => {
+    addToCart(product);
+  };
+
   return (
     <div className="mainContainer">
       <h1 className="text-center padding-m">Wishlist</h1>
@@ -26,15 +35,21 @@ const Wishlist = () => {
               </div>
 
               <div className="action-btns flex-center">
-                <button
-                  className="card-btn card-btn-primary"
-                  onClick={() => {}}
-                >
-                  Add to cart
-                </button>
+                {isItemInList(product, cart) ? (
+                  <button className="card-btn card-btn-primary">
+                    <Link to="/cart">Go to cart</Link>
+                  </button>
+                ) : (
+                  <button
+                    className="card-btn card-btn-primary"
+                    onClick={() => cartHandler()}
+                  >
+                    Add to cart
+                  </button>
+                )}
                 <button
                   className="card-btn card-btn-secondary"
-                  onClick={() => {}}
+                  onClick={() => removeFromWishlist(product)}
                 >
                   Remove
                 </button>

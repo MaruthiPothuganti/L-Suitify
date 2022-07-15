@@ -1,8 +1,12 @@
 import "./CSS/cart.css";
 import { useCart } from "../Context/CartContext";
+import { useWishlist } from "../Context/WishlistContext";
+import { isItemInList } from "../Utils/helpers";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cart } = useCart();
+  const { cart, removeFromCart } = useCart();
+  const { wishlist, addToWishlist } = useWishlist();
 
   return (
     <div className="mainContainer">
@@ -27,21 +31,31 @@ const Cart = () => {
                   <button className="btn" onClick={() => {}}>
                     -
                   </button>
-                  <input
-                    type="number"
-                    className="productCount"
-                    defaultValue={prod.quantity}
-                  />
+                  <span className="productCount">{prod.qty}</span>
                   <button className="btn" onClick={() => {}}>
                     +
                   </button>
                 </div>
                 <div className="action-btns flex-center">
-                  <button className="btn btn-primary" onClick={() => {}}>
-                    Move to Wishlist
-                  </button>
-                  <button className="btn btn-secondary" onClick={() => {}}>
-                    Remove from cart
+                  {isItemInList(prod, wishlist) ? (
+                    <button className="btn btn-primary">
+                      <Link to="/wishlist">Go to Wishlist</Link>
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        addToWishlist(prod);
+                      }}
+                    >
+                      Wish it
+                    </button>
+                  )}
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => removeFromCart(prod)}
+                  >
+                    Uncart
                   </button>
                 </div>
               </div>

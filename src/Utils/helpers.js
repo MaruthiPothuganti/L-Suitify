@@ -31,3 +31,7 @@ export const initialAuthState = {
     email: "",
     password: "",
 };
+
+export const isItemInList = (item, arr) => {
+  return arr.find(({ _id }) => _id === item._id) !== undefined;
+};
