@@ -5,11 +5,11 @@ export const userDetailsReducer = (state, action) => {
     const { LOGIN,LOGOUT } = ACTION_TYPE;
     switch (action.type) {
         case LOGIN:
-            localStorage.setItem("userData", {
+            localStorage.setItem("userData", JSON.stringify({
                 token: action.payload.data.encodedToken,
                 name: action.payload.data.foundUser.firstName,
                 email: action.payload.data.foundUser.email
-            });
+            }));
             return {
                 ...state,
                 token: action.payload.data.encodedToken,

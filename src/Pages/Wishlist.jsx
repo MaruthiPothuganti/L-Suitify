@@ -1,10 +1,11 @@
-import { useData } from "../Context/UserDataContext";
-import { ACTION_TYPE } from "../Utils/constants";
+import { Link } from "react-router-dom";
+import { useWishlist } from "../Context/WishlistContext";
+import { useCart } from "../Context/CartContext";
+import { isItemInList } from "../Utils/helpers";
 
 const Wishlist = () => {
-  const { userDataState, userDataDispatch } = useData();
-  const { wishlist } = userDataState;
-  const { REMOVE_FROM_WISHLIST, MOVE_TO_CART } = ACTION_TYPE;
+  const { wishlist, removeFromWishlist } = useWishlist();
+  const { cart, addToCart } = useCart();
 
   return (
     <div className="mainContainer">
@@ -30,25 +31,21 @@ const Wishlist = () => {
               </div>
 
               <div className="action-btns flex-center">
-                <button
-                  className="card-btn card-btn-primary"
-                  onClick={() => {
-                    userDataDispatch({
-                      type: MOVE_TO_CART,
-                      payload: product,
-                    });
-                  }}
-                >
-                  Add to cart
-                </button>
+                {isItemInList(product, cart) ? (
+                  <button className="card-btn card-btn-primary">
+                    <Link to="/cart">Go to cart</Link>
+                  </button>
+                ) : (
+                  <button
+                    className="card-btn card-btn-primary"
+                    onClick={() => addToCart(product)}
+                  >
+                    Add to cart
+                  </button>
+                )}
                 <button
                   className="card-btn card-btn-secondary"
-                  onClick={() => {
-                    userDataDispatch({
-                      type: REMOVE_FROM_WISHLIST,
-                      payload: product,
-                    });
-                  }}
+                  onClick={() => removeFromWishlist(product)}
                 >
                   Remove
                 </button>

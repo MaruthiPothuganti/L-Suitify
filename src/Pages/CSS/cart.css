@@ -7,7 +7,6 @@
 
 .ecom-img {
 	border-radius: 10px;
-	width: auto !important;
 }
 
 .desc{
@@ -18,8 +17,8 @@
 }
 
 .productCount{
-	width: 5rem;
-	text-align: center;
 	font-weight: bolder;
+	font-size: 2rem;
+	padding: 1rem;
 }
 

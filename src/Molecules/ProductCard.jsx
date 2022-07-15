@@ -1,33 +1,23 @@
 import "./CSS/productcard.css";
-import { useNavigate } from "react-router-dom";
-import { useData } from "../Context/UserDataContext";
-import { ACTION_TYPE } from "../Utils/constants";
-import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
+import { useWishlist } from "../Context/WishlistContext";
+import { useCart } from "../Context/CartContext";
+import { isItemInList } from "../Utils/helpers";
 
 export const ProductCard = ({ product }) => {
-  const [inWishlist, setInWishlist] = useState(false);
   const navigate = useNavigate();
-  const { userDataDispatch, userDataState } = useData();
-  const { wishlist } = userDataState;
   const { userAuthState } = useAuth();
   const { isAuthenticated } = userAuthState;
-  const { ADD_TO_CART, ADD_TO_WISHLIST } = ACTION_TYPE;
+  const { addToWishlist, wishlist, removeFromWishlist } = useWishlist();
+  const { addToCart, cart } = useCart();
 
   const wishlistHandler = () => {
     if (!isAuthenticated) {
       navigate("/Login", { replace: true });
     }
     if (isAuthenticated) {
-      if (wishlist.includes(product)) {
-        setInWishlist(true);
-      }
-      if (!wishlist.includes(product)) {
-        userDataDispatch({
-          type: ADD_TO_WISHLIST,
-          payload: product,
-        });
-      }
+      addToWishlist(product);
     }
   };
 
@@ -36,10 +26,7 @@ export const ProductCard = ({ product }) => {
       navigate("/Login", { replace: true });
     }
     if (isAuthenticated) {
-      userDataDispatch({
-        type: ADD_TO_CART,
-        payload: product,
-      });
+      addToCart(product);
     }
   };
 
@@ -57,16 +44,30 @@ export const ProductCard = ({ product }) => {
       </div>
 
       <div className="action-btns flex-center">
-        <button className="card-btn card-btn-primary" onClick={cartHandler}>
-          Add to cart
-        </button>
-
-        <button
-          className="card-btn card-btn-secondary"
-          onClick={wishlistHandler}
-        >
-          {inWishlist ? "Added ✅" : "To Wishlist"}
-        </button>
+        {isItemInList(product, cart) ? (
+          <button className="card-btn card-btn-primary">
+            <Link to="/cart">Go to cart</Link>
+          </button>
+        ) : (
+          <button className="card-btn card-btn-primary" onClick={cartHandler}>
+            Add to cart
+          </button>
+        )}
+        {isItemInList(product, wishlist) ? (
+          <button
+            className="card-btn card-btn-secondary"
+            onClick={() => removeFromWishlist(product)}
+          >
+            UnWish
+          </button>
+        ) : (
+          <button
+            className="card-btn card-btn-secondary"
+            onClick={wishlistHandler}
+          >
+            Wish it
+          </button>
+        )}
       </div>
 
       {product.arrivedNewly && <span className="ribbon">NEW</span>}

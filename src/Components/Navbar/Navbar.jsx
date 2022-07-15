@@ -1,24 +1,23 @@
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useData } from "../../Context/UserDataContext";
 import { useAuth } from "../../Context/AuthContext";
+import { useWishlist } from "../../Context/WishlistContext";
+import { useCart } from "../../Context/CartContext";
 import { ACTION_TYPE } from "../../Utils/constants";
 
 export function Navbar() {
   const navigate = useNavigate();
-  const { userDataState, userDataDispatch } = useData();
-  const { cart, wishlist } = userDataState;
   const { userAuthState, dispatchUserAuth } = useAuth();
   const { isAuthenticated } = userAuthState;
   const { LOGOUT } = ACTION_TYPE;
+  const { wishlist } = useWishlist();
+  const { cart } = useCart();
 
   const logoutHandler = () => {
     dispatchUserAuth({
       type: LOGOUT,
     });
-    userDataDispatch({
-      type: LOGOUT,
-    });
+
     navigate("/", { replace: true });
   };
 
@@ -59,7 +58,7 @@ export function Navbar() {
         </Link>
         {isAuthenticated ? (
           <button className="badge" onClick={logoutHandler}>
-            <i class="fa-solid fa-circle-user"></i>
+            <i className="fa-solid fa-circle-user"></i>
           </button>
         ) : (
           <Link to="/Login">

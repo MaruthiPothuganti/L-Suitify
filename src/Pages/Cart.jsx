@@ -1,14 +1,12 @@
 import "./CSS/cart.css";
-import { useData } from "../Context/UserDataContext";
-import { ACTION_TYPE } from "../Utils/constants";
+import { useCart } from "../Context/CartContext";
+import { useWishlist } from "../Context/WishlistContext";
+import { isItemInList } from "../Utils/helpers";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { userDataState, userDataDispatch } = useData();
-  const { cart } = userDataState;
-  const { INCREMENT, DECREMENT, REMOVE_FROM_CART, MOVE_TO_WISHLIST } =
-    ACTION_TYPE;
-
-  console.log("cart", cart);
+  const { cart, removeFromCart, updateCart } = useCart();
+  const { wishlist, addToWishlist } = useWishlist();
 
   return (
     <div className="mainContainer">
@@ -21,7 +19,7 @@ const Cart = () => {
               <div className="desc">
                 <h1 className="prod-title padding-m">{prod.title}</h1>
                 <p className="seller padding-h-xl">
-                  Sold by italiano{" "}
+                  Sold by italiano
                   <span className="rating">{prod.rating}⭐</span>
                 </p>
                 <div className="ecom-price padding-l">
@@ -33,53 +31,41 @@ const Cart = () => {
                   <button
                     className="btn"
                     onClick={() => {
-                      userDataDispatch({
-                        type: DECREMENT,
-                        payload: prod,
-                      });
+                      updateCart(prod, "decrement");
                     }}
                   >
                     -
                   </button>
-                  <input
-                    type="number"
-                    className="productCount"
-                    defaultValue={prod.quantity}
-                  />
+                  <span className="productCount">{prod.qty}</span>
                   <button
                     className="btn"
                     onClick={() => {
-                      userDataDispatch({
-                        type: INCREMENT,
-                        payload: prod,
-                      });
+                      updateCart(prod, "increment");
                     }}
                   >
                     +
                   </button>
                 </div>
                 <div className="action-btns flex-center">
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      userDataDispatch({
-                        type: MOVE_TO_WISHLIST,
-                        payload: prod,
-                      });
-                    }}
-                  >
-                    Move to Wishlist
-                  </button>
+                  {isItemInList(prod, wishlist) ? (
+                    <button className="btn btn-primary">
+                      <Link to="/wishlist">Go to Wishlist</Link>
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        addToWishlist(prod);
+                      }}
+                    >
+                      Wish it
+                    </button>
+                  )}
                   <button
                     className="btn btn-secondary"
-                    onClick={() => {
-                      userDataDispatch({
-                        type: REMOVE_FROM_CART,
-                        payload: prod,
-                      });
-                    }}
+                    onClick={() => removeFromCart(prod)}
                   >
-                    Remove from cart
+                    Uncart
                   </button>
                 </div>
               </div>
