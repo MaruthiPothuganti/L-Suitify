@@ -8,9 +8,6 @@ export function Modal({ handleClose, show, children }) {
       <section className="modal-main">
         {children}
         <div className="btnGroup">
-          <button className="btn-ol-primary" onClick={handleClose}>
-            Apply
-          </button>
           <button className="btn-primary" onClick={handleClose}>
             Close
           </button>

@@ -7,9 +7,18 @@ import { Link } from "react-router-dom";
 import { Modal } from "../Components/Modal/Modal";
 
 const Cart = () => {
-  const { cart, removeFromCart, updateCart } = useCart();
+  const { cart, removeFromCart, updateCart, totalOrderPrice, savedAmount } =
+    useCart();
   const { wishlist, addToWishlist } = useWishlist();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [coupon, setCoupon] = useState(0);
+
+  let finalPrice;
+  if (coupon !== null) {
+    finalPrice = totalOrderPrice - totalOrderPrice * (coupon / 100);
+  } else {
+    finalPrice = totalOrderPrice;
+  }
 
   return (
     <div className="mainContainer">
@@ -110,7 +119,7 @@ const Cart = () => {
                 <tr>
                   <td></td>
                   <td>Total</td>
-                  <td>₹ 2000</td>
+                  <td>₹ {finalPrice}</td>
                 </tr>
               </tbody>
             </table>
@@ -119,7 +128,39 @@ const Cart = () => {
                 show={isModalOpen}
                 handleClose={() => setIsModalOpen(false)}
               >
-                Baba Blacksheep
+                <label htmlFor="10%">
+                  <input
+                    type="radio"
+                    name="coupon"
+                    id="10%"
+                    className="coupon"
+                    onChange={() => setCoupon(10)}
+                    checked={coupon === 10}
+                  />{" "}
+                  Dhamaka 10% Off
+                </label>
+                <label htmlFor="20%">
+                  <input
+                    type="radio"
+                    name="coupon"
+                    id="20%"
+                    className="coupon"
+                    checked={coupon === 20}
+                    onChange={() => setCoupon(20)}
+                  />{" "}
+                  Dhamaka 20% Off
+                </label>
+                <label htmlFor="0%">
+                  <input
+                    type="radio"
+                    name="coupon"
+                    id="0%"
+                    className="coupon"
+                    checked={coupon === 0}
+                    onChange={() => setCoupon(0)}
+                  />{" "}
+                  None
+                </label>
               </Modal>
               <button className="btn" onClick={() => setIsModalOpen(true)}>
                 Apply coupon

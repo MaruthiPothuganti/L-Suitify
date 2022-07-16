@@ -58,6 +58,10 @@ td, th {
   padding: 2rem;
 }
 
+.coupon {
+	padding: 4rem;
+}
+
 .orderBtn{
 	display: flex;
 	justify-content: space-between;

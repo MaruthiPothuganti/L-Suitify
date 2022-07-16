@@ -77,6 +77,8 @@ const CartListContext = ({ children }) => {
         addToCart,
         removeFromCart,
         updateCart,
+        savedAmount,
+        totalOrderPrice,
       }}
     >
       {children}

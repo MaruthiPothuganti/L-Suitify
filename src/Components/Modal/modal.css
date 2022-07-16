@@ -12,7 +12,7 @@
   flex-direction: column;
   position:fixed;
   background: white;
-  width: 60%;
+  width: 80%;
   height: auto;
   top:50%;
   left:50%;
@@ -33,3 +33,4 @@
     justify-content: flex-end;
     gap: 1rem;
 }
+
