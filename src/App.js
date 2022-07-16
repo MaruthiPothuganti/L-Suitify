@@ -5,6 +5,7 @@ import { RequireAuth } from "./Components/RequireAuth";
 import './App.css'
 import { Address } from "./Components/Address/Address";
 import { Orders } from "./Components/Orders/Orders";
+import { OrderSummary } from "./Pages/OrderSummary/OrderSummary";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/Profile/address' element={<Address/>} />
           <Route path='/Profile/orders' element={<Orders/>} />
         </Route>
+        <Route path="/OrderSummary" element={<RequireAuth><OrderSummary /></RequireAuth>} />
       </Routes>
     </div>
     );
