@@ -1,10 +1,21 @@
 import "./CSS/profile.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
+import { ACTION_TYPE } from "../Utils/constants";
 
 export function Profile() {
-  const { userAuthState } = useAuth();
+  const navigate = useNavigate();
+  const { userAuthState, dispatchUserAuth } = useAuth();
   const { fullName, email } = userAuthState;
+  const { LOGOUT } = ACTION_TYPE;
+
+  const logoutHandler = () => {
+    dispatchUserAuth({
+      type: LOGOUT,
+    });
+
+    navigate("/", { replace: true });
+  };
 
   return (
     <main className="profile flex-center padding-h-l">
@@ -15,14 +26,20 @@ export function Profile() {
             <p>{fullName}</p>
             <span className="small">{email}</span>
           </div>
-          <button className="btn btn-ol-accent">Log Out</button>
+          <button className="btn btn-ol-accent" onClick={logoutHandler}>
+            Log Out
+          </button>
         </div>
         <nav className="tabs flex-space-even">
           <h2>
-            <Link to="address">Address</Link>
+            <Link className="tab" to="address">
+              Address
+            </Link>
           </h2>
           <h2>
-            <Link to="orders">Orders</Link>
+            <Link className="tab" to="orders">
+              Orders
+            </Link>
           </h2>
         </nav>
         <Outlet />

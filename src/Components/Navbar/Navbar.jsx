@@ -1,25 +1,14 @@
 import "./navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { useWishlist } from "../../Context/WishlistContext";
 import { useCart } from "../../Context/CartContext";
-import { ACTION_TYPE } from "../../Utils/constants";
 
 export function Navbar() {
-  const navigate = useNavigate();
-  const { userAuthState, dispatchUserAuth } = useAuth();
+  const { userAuthState } = useAuth();
   const { isAuthenticated, name } = userAuthState;
-  const { LOGOUT } = ACTION_TYPE;
   const { wishlist } = useWishlist();
   const { cart } = useCart();
-
-  const logoutHandler = () => {
-    dispatchUserAuth({
-      type: LOGOUT,
-    });
-
-    navigate("/", { replace: true });
-  };
 
   return (
     <nav className="ecom-navbar">
