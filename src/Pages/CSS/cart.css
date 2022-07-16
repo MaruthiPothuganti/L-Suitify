@@ -4,29 +4,6 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
-.card {
-	border: 1px solid var(--bg-one);
-	display: flex;
-	border-radius: 10px;
-	width: 50rem;
-}
-
-.ecom-img {
-	border-radius: 10px;
-}
-
-.desc{
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-}
-
-.productCount{
-	font-weight: bolder;
-	font-size: 2rem;
-	padding: 1rem;
-}
 
 .productContainer{
 	height: 80vh;
@@ -49,13 +26,6 @@
 	height: auto;
 	font-size: 1.5rem;
 
-}
-
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 2rem;
 }
 
 .coupon {
