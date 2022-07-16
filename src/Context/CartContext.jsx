@@ -61,13 +61,11 @@ const CartListContext = ({ children }) => {
     (acc, curr) => acc + Number(curr.discountedPrice) * curr.qty,
     0
   );
-  console.log("totalOrderPrice", totalOrderPrice);
 
   let savedAmount = cart.reduce(
     (acc, curr) => acc + Number(curr.offer) * curr.qty,
     0
   );
-  console.log("savedAmount", savedAmount);
 
   return (
     <CartContext.Provider

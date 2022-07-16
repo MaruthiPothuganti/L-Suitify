@@ -1,25 +1,14 @@
 import "./navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { useWishlist } from "../../Context/WishlistContext";
 import { useCart } from "../../Context/CartContext";
-import { ACTION_TYPE } from "../../Utils/constants";
 
 export function Navbar() {
-  const navigate = useNavigate();
-  const { userAuthState, dispatchUserAuth } = useAuth();
-  const { isAuthenticated } = userAuthState;
-  const { LOGOUT } = ACTION_TYPE;
+  const { userAuthState } = useAuth();
+  const { isAuthenticated, name } = userAuthState;
   const { wishlist } = useWishlist();
   const { cart } = useCart();
-
-  const logoutHandler = () => {
-    dispatchUserAuth({
-      type: LOGOUT,
-    });
-
-    navigate("/", { replace: true });
-  };
 
   return (
     <nav className="ecom-navbar">
@@ -64,8 +53,11 @@ export function Navbar() {
           </button>
         </Link>
         {isAuthenticated ? (
-          <button className="badge" onClick={logoutHandler}>
-            <i className="fa-solid fa-circle-user"></i>
+          <button className="badge">
+            <Link to="/Profile" className="profileLink flex-center">
+              <i className="fa-solid fa-circle-user"></i>
+              <h2> Hi, {name}</h2>
+            </Link>
           </button>
         ) : (
           <Link to="/Login">
