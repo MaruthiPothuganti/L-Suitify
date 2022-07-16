@@ -28,6 +28,7 @@ export const initialAuthState = {
     token: "",
     isAuthenticated: false,
     name: "",
+    fullName:"",
     email: "",
     password: "",
 };

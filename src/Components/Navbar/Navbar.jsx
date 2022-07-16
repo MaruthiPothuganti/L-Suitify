@@ -8,7 +8,7 @@ import { ACTION_TYPE } from "../../Utils/constants";
 export function Navbar() {
   const navigate = useNavigate();
   const { userAuthState, dispatchUserAuth } = useAuth();
-  const { isAuthenticated } = userAuthState;
+  const { isAuthenticated, name } = userAuthState;
   const { LOGOUT } = ACTION_TYPE;
   const { wishlist } = useWishlist();
   const { cart } = useCart();
@@ -64,8 +64,11 @@ export function Navbar() {
           </button>
         </Link>
         {isAuthenticated ? (
-          <button className="badge" onClick={logoutHandler}>
-            <i className="fa-solid fa-circle-user"></i>
+          <button className="badge">
+            <Link to="/Profile" className="profileLink flex-center">
+              <i className="fa-solid fa-circle-user"></i>
+              <h2> Hi, {name}</h2>
+            </Link>
           </button>
         ) : (
           <Link to="/Login">

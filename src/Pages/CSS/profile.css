@@ -1,0 +1,16 @@
+.profileInfo{
+    font-size: 4rem;
+    gap: 2rem;
+}
+
+.small{
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-self: start;
+}
+
+.tabs{
+    border-bottom: 1px solid;
+    padding: 1rem 1rem 0.5rem 1rem;
+}
