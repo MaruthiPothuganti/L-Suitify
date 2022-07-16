@@ -3,10 +3,11 @@ import { useState } from "react";
 import { useCart } from "../Context/CartContext";
 import { useWishlist } from "../Context/WishlistContext";
 import { isItemInList } from "../Utils/helpers";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "../Components/Modal/Modal";
 import { CartSummary } from "../Components/CartSummary/CartSummary";
 import { CartCard } from "../Components/CartCard/CartCard";
+import { v4 as uuid } from "uuid";
 
 const Cart = () => {
   const { cart, removeFromCart, updateCart, totalOrderPrice, savedAmount } =
@@ -14,6 +15,7 @@ const Cart = () => {
   const { wishlist, addToWishlist } = useWishlist();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [coupon, setCoupon] = useState(0);
+  const navigate = useNavigate();
 
   const couponList = [
     { type: "radio", id: 10, name: "coupon" },
@@ -21,14 +23,76 @@ const Cart = () => {
     { type: "radio", id: 0, name: "coupon" },
   ];
 
-  let finalPrice;
-  if (coupon !== null) {
-    finalPrice = totalOrderPrice - totalOrderPrice * (coupon / 100);
-  } else {
-    finalPrice = totalOrderPrice;
+  let finalPrice = getFinalPrice();
+
+  function getFinalPrice() {
+    let finalPrice;
+    if (coupon !== null) {
+      finalPrice = totalOrderPrice - totalOrderPrice * (coupon / 100);
+    } else {
+      finalPrice = totalOrderPrice;
+    }
+    return finalPrice;
   }
 
   //-----------------------------------
+
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+
+  async function displayRazorpay(amount) {
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+
+    if (!res) {
+      alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
+    const options = {
+      key: "rzp_test_jbHBdg17p2eyL0",
+      amount: amount * 100,
+      currency: "INR",
+      name: "L-Suitify",
+      description: "Thankyou for Shopping with us",
+      image: "",
+      handler: async function (response) {
+        const orderId = uuid();
+        const orderData = {
+          orderId,
+          products: [...cart],
+          amount: amount,
+          name: "Maruthi Pothuganti",
+          mobile: 9988774455,
+          paymentId: response.razorpay_payment_id,
+        };
+
+        navigate("/OrderSummary", { state: orderData });
+      },
+      prefill: {
+        name: "John ImranReddy",
+        email: "johnimranreddy@gmail.com",
+        contact: "9999999999",
+      },
+      theme: {
+        color: "#61dafb",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  }
 
   //-----------------------------------
   return (
@@ -65,7 +129,7 @@ const Cart = () => {
               >
                 {couponList.map((ele) => {
                   return (
-                    <label htmlFor={ele.id}>
+                    <label htmlFor={ele.id} key={ele.id}>
                       <input
                         type={ele.type}
                         name={ele.name}
@@ -82,7 +146,15 @@ const Cart = () => {
               <button className="btn" onClick={() => setIsModalOpen(true)}>
                 Apply coupon
               </button>
-              <button className="btn btn-primary">Place Order</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  displayRazorpay(finalPrice);
+                  console.log("finalPrice", finalPrice);
+                }}
+              >
+                Place Order
+              </button>
             </div>
           </div>
         </div>
