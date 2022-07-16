@@ -46,6 +46,7 @@ const Cart = () => {
                       onClick={() => {
                         updateCart(prod, "decrement");
                       }}
+                      disabled={prod.qty === 1}
                     >
                       -
                     </button>
