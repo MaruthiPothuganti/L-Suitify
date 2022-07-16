@@ -11,3 +11,9 @@
     font-size: 5rem;
     font-family: 'Saira Condensed', sans-serif;
 }
+
+.accessLink{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}

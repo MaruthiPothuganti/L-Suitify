@@ -23,11 +23,18 @@ export function Navbar() {
 
   return (
     <nav className="ecom-navbar">
-      <div className="flex-center">
-        <ion-icon className="ham-menu" name="menu-outline"></ion-icon>
+      <div className="accessLink">
         <div>
           <Link to="/">
             <h1 className="heroLogo">L-Suitify</h1>
+          </Link>
+        </div>
+        <div>
+          <Link to="/ProductListing">
+            {" "}
+            <h2>
+              <i className="fas fa-store fa-xl" title="products"></i> Shop now
+            </h2>
           </Link>
         </div>
       </div>

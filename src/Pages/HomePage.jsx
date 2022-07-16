@@ -1,10 +1,13 @@
-import { Main} from '../Components/MainSection/MainSection'
+import { Main } from "../Components/MainSection/MainSection";
+import { Footer } from "../Components/Footer/Footer";
 
 let HomePage = () => {
-    return <div>
-        <Main />
+  return (
+    <div>
+      <Main />
+      <Footer />
     </div>
-}
+  );
+};
 
-
-export default HomePage ;
+export default HomePage;
