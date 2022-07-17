@@ -1,8 +1,63 @@
-import { useContext, createContext } from "react";
+import { useContext, createContext, useEffect, useState } from "react";
+import { useAxios } from "../Hooks/useAxios";
+import { useAuth } from "./AuthContext";
 
 const Address = createContext();
 
 const AddressContext = ({ children }) => {
+  const { response, fireRequest } = useAxios();
+  const { userAuthState } = useAuth();
+  const { token, isAuthenticated } = userAuthState;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      getAddresses();
+    }
+    // eslint-disable-next-line
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (response) {
+      console.log(response);
+      const newList = response.address;
+      setAddresses(newList);
+    }
+  }, [response]);
+
+  const getAddresses = () => {
+    fireRequest({
+      method: "get",
+      url: "/api/user/address",
+      headers: { authorization: token },
+    });
+  };
+
+  const addAddress = (address) => {
+    fireRequest({
+      method: "post",
+      url: "/api/user/address",
+      headers: { authorization: token },
+      data: { address },
+    });
+  };
+
+  const removeAddress = (address) => {
+    fireRequest({
+      method: "delete",
+      url: `/api/user/address/${address._id}`,
+      headers: { authorization: token },
+    });
+  };
+
+  const updateAddress = (address, operation) => {
+    fireRequest({
+      method: "post",
+      url: `/api/user/address/${address._id}`,
+      headers: { authorization: token },
+      data: { action: { type: operation } },
+    });
+  };
+
   const initialAddressState = [
     {
       fullName: "",
@@ -14,14 +69,17 @@ const AddressContext = ({ children }) => {
       pin: null,
     },
   ];
+
   const [addresses, setAddresses] = useState(initialAddressState);
   return (
-    <Address.Provider value={{ userAuthState, dispatchUserAuth }}>
+    <Address.Provider
+      value={{ addresses, addAddress, removeAddress, updateAddress }}
+    >
       {children}
     </Address.Provider>
   );
 };
 
-const useAuth = () => useContext(Address);
+const useAddress = () => useContext(Address);
 
-export { useAuth, AddressContext };
+export { useAddress, AddressContext };

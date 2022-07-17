@@ -8,6 +8,7 @@ import { AuthContext } from "./Context/AuthContext";
 import { makeServer } from "./server";
 import { WishlistContext } from "./Context/WishlistContext";
 import { CartListContext } from "./Context/CartContext";
+import {AddressContext} from "./Context/AddressContext"
 
 
 // Call make Server
@@ -18,11 +19,13 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthContext>
         <WishlistContext>
+          <AddressContext>
           <CartListContext>
             <ProductContext>
               <App />
             </ProductContext>
             </CartListContext>
+            </AddressContext>
           </WishlistContext>
         </AuthContext>
       </BrowserRouter>
