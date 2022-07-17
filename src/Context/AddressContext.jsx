@@ -9,6 +9,8 @@ const AddressContext = ({ children }) => {
   const { userAuthState } = useAuth();
   const { token, isAuthenticated } = userAuthState;
 
+  const [addresses, setAddresses] = useState([]);
+
   useEffect(() => {
     if (isAuthenticated) {
       getAddresses();
@@ -18,7 +20,6 @@ const AddressContext = ({ children }) => {
 
   useEffect(() => {
     if (response) {
-      console.log(response);
       const newList = response.address;
       setAddresses(newList);
     }
@@ -54,26 +55,23 @@ const AddressContext = ({ children }) => {
       method: "post",
       url: `/api/user/address/${address._id}`,
       headers: { authorization: token },
-      data: { action: { type: operation } },
+      data: { address },
     });
   };
 
-  const initialAddressState = [
-    {
-      fullName: "",
-      mobile: "",
-      houseNo: "",
-      city: "",
-      district: "",
-      state: "",
-      pin: null,
-    },
-  ];
+  const getDefaultAddress = (addresses) => {
+    return addresses.filter((address) => address.default === true)[0];
+  };
 
-  const [addresses, setAddresses] = useState(initialAddressState);
   return (
     <Address.Provider
-      value={{ addresses, addAddress, removeAddress, updateAddress }}
+      value={{
+        addresses,
+        addAddress,
+        removeAddress,
+        updateAddress,
+        getDefaultAddress,
+      }}
     >
       {children}
     </Address.Provider>

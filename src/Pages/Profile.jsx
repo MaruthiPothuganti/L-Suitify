@@ -42,7 +42,9 @@ export function Profile() {
             </Link>
           </h2>
         </nav>
-        <Outlet />
+        <div className="ordersAndAddress">
+          <Outlet />
+        </div>
       </div>
     </main>
   );

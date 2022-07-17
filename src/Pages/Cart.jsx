@@ -2,6 +2,7 @@ import "./CSS/cart.css";
 import { useState } from "react";
 import { useCart } from "../Context/CartContext";
 import { useWishlist } from "../Context/WishlistContext";
+import { useAddress } from "../Context/AddressContext";
 import { isItemInList } from "../Utils/helpers";
 import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "../Components/Modal/Modal";
@@ -13,6 +14,7 @@ const Cart = () => {
   const { cart, removeFromCart, updateCart, totalOrderPrice, savedAmount } =
     useCart();
   const { wishlist, addToWishlist } = useWishlist();
+  const { getDefaultAddress, addresses } = useAddress();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [coupon, setCoupon] = useState(0);
   const navigate = useNavigate();
@@ -73,16 +75,16 @@ const Cart = () => {
           orderId,
           products: [...cart],
           amount: amount,
-          name: "Maruthi Pothuganti",
-          mobile: 9988774455,
+          name: defaultAddress.fullName,
+          mobile: defaultAddress.mobile,
           paymentId: response.razorpay_payment_id,
         };
 
         navigate("/OrderSummary", { state: orderData });
       },
       prefill: {
-        name: "John ImranReddy",
-        email: "johnimranreddy@gmail.com",
+        name: "L-Suitify",
+        email: "l-Suitify@org.co",
         contact: "9999999999",
       },
       theme: {
@@ -94,10 +96,26 @@ const Cart = () => {
     paymentObject.open();
   }
 
+  let defaultAddress = getDefaultAddress(addresses);
+
   //-----------------------------------
   return (
     <div className="mainContainer">
       <h1 className="text-center padding-m">Cart ({cart.length}) </h1>
+      <div className="addressContainer">
+        <div className="defaultAddress">
+          <h2>{defaultAddress.fullName}</h2>
+          <h3>
+            {defaultAddress.houseNo}, {defaultAddress.city},{" "}
+            {defaultAddress.city}, {defaultAddress.state},{" "}
+            {defaultAddress.country}, {defaultAddress.mobile},{" "}
+            {defaultAddress.ZIP}.
+          </h3>
+        </div>
+        <Link to="/Profile/address">
+          <i className="fa-solid fa-pen-to-square fa-2xl"></i>
+        </Link>
+      </div>
       <div className="cartAndSummary">
         <div className="cartContainer padding-l">
           {cart.length > 0 ? (

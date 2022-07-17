@@ -22,3 +22,10 @@
 .tab:active{
     color: var(--accent-color);
 }
+
+
+.ordersAndAddress{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
