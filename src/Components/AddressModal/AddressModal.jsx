@@ -2,20 +2,14 @@ import "./addressModal.css";
 import { useState } from "react";
 import { useAddress } from "../../Context/AddressContext";
 
-export function AddressModal({ handleClose, show }) {
-  const initialAddressState = {
-    fullName: "",
-    mobile: "",
-    houseNo: "",
-    city: "",
-    state: "",
-    country: "",
-    ZIP: "",
-    default: false,
-  };
-  const [addrss, setAddrss] = useState(initialAddressState);
-
-  const { addAddress, removeAddress, updateAddress } = useAddress();
+export function AddressModal({
+  handleClose,
+  show,
+  addrss,
+  setAddrss,
+  initialAddressState,
+}) {
+  const { addAddress, updateAddress } = useAddress();
 
   const showHideClassName = show
     ? "addressModal display-block"
@@ -32,6 +26,12 @@ export function AddressModal({ handleClose, show }) {
     setAddrss(initialAddressState);
   };
 
+  const updateHandler = () => {
+    updateAddress(addrss);
+    handleClose(false);
+    setAddrss(initialAddressState);
+  };
+
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
@@ -40,7 +40,6 @@ export function AddressModal({ handleClose, show }) {
             <h1>Add New Address</h1>
             <input
               type="text"
-              required={true}
               name="fullname"
               placeholder="Full Name"
               value={addrss.fullName}
@@ -50,7 +49,6 @@ export function AddressModal({ handleClose, show }) {
             />
             <input
               type="text"
-              required={true}
               name="mobileno"
               placeholder="Phone Number"
               value={addrss.mobile}
@@ -60,7 +58,6 @@ export function AddressModal({ handleClose, show }) {
             />
             <input
               type="text"
-              required={true}
               name="houseNo"
               placeholder="House Number"
               value={addrss.houseNo}
@@ -70,7 +67,6 @@ export function AddressModal({ handleClose, show }) {
             />
             <input
               type="text"
-              required={true}
               name="city"
               placeholder="City"
               value={addrss.city}
@@ -80,17 +76,15 @@ export function AddressModal({ handleClose, show }) {
             />
             <input
               type="text"
-              required={true}
               name="state"
               placeholder="State"
-              value={addrss}
+              value={addrss.state}
               onChange={(e) => {
                 setAddrss({ ...addrss, state: e.target.value });
               }}
             />
             <input
               type="text"
-              required={true}
               name="country"
               placeholder="Country"
               value={addrss.country}
@@ -100,7 +94,6 @@ export function AddressModal({ handleClose, show }) {
             />
             <input
               type="text"
-              required={true}
               name="zip"
               placeholder="PinCode"
               value={addrss.ZIP}
@@ -108,9 +101,19 @@ export function AddressModal({ handleClose, show }) {
                 setAddrss({ ...addrss, ZIP: e.target.value });
               }}
             />
-            <button type="submit" className="btn btn-primary">
-              Add
-            </button>
+            {addrss._id ? (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={updateHandler}
+              >
+                Update
+              </button>
+            ) : (
+              <button type="submit" className="btn btn-primary">
+                Add
+              </button>
+            )}
             <button
               type="button"
               className="btn btn-ol-accent"

@@ -50,7 +50,7 @@ const AddressContext = ({ children }) => {
     });
   };
 
-  const updateAddress = (address, operation) => {
+  const updateAddress = (address) => {
     fireRequest({
       method: "post",
       url: `/api/user/address/${address._id}`,
