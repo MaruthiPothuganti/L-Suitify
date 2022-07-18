@@ -1,6 +1,6 @@
 import "./addressModal.css";
-import { useState } from "react";
 import { useAddress } from "../../Context/AddressContext";
+import { toast } from "react-toastify";
 
 export function AddressModal({
   handleClose,

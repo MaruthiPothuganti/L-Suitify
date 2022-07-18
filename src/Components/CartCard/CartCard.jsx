@@ -1,5 +1,6 @@
 import "./cartCard.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export function CartCard({
   cart,

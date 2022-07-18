@@ -1,11 +1,13 @@
+import './App.css'
 import { Routes, Route } from "react-router-dom";
 import {SignUp, Login, HomePage, ProductListing, Wishlist, Cart, Profile} from './Pages';
 import { Navbar } from "./Components/Navbar/Navbar";
 import { RequireAuth } from "./Components/RequireAuth";
-import './App.css'
 import { Address } from "./Components/Address/Address";
 import { Orders } from "./Components/Orders/Orders";
 import { OrderSummary } from "./Pages/OrderSummary/OrderSummary";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -25,6 +27,7 @@ function App() {
         </Route>
         <Route path="/OrderSummary" element={<RequireAuth><OrderSummary /></RequireAuth>} />
       </Routes>
+      <ToastContainer style={{ "fontSize":"1.5rem" }}/>
     </div>
     );
 }

@@ -4,6 +4,7 @@ import { useAuth } from "../Context/AuthContext";
 import { useWishlist } from "../Context/WishlistContext";
 import { useCart } from "../Context/CartContext";
 import { isItemInList } from "../Utils/helpers";
+import { toast } from "react-toastify";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -14,19 +15,23 @@ export const ProductCard = ({ product }) => {
 
   const wishlistHandler = () => {
     if (!isAuthenticated) {
+      toast.warning("Please Login");
       navigate("/Login", { replace: true });
     }
     if (isAuthenticated) {
       addToWishlist(product);
+      toast.info("Product added to WishList");
     }
   };
 
   const cartHandler = () => {
     if (!isAuthenticated) {
+      toast.warning("Please Login");
       navigate("/Login", { replace: true });
     }
     if (isAuthenticated) {
       addToCart(product);
+      toast.info("Product added to Cart");
     }
   };
 
@@ -56,7 +61,10 @@ export const ProductCard = ({ product }) => {
         {isItemInList(product, wishlist) ? (
           <button
             className="card-btn card-btn-secondary"
-            onClick={() => removeFromWishlist(product)}
+            onClick={() => {
+              removeFromWishlist(product);
+              toast.info("Removed from wishlist");
+            }}
           >
             UnWish
           </button>

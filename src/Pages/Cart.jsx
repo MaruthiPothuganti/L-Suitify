@@ -1,5 +1,5 @@
 import "./CSS/cart.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useCart } from "../Context/CartContext";
 import { useWishlist } from "../Context/WishlistContext";
 import { useAddress } from "../Context/AddressContext";
@@ -9,12 +9,13 @@ import { Modal } from "../Components/Modal/Modal";
 import { CartSummary } from "../Components/CartSummary/CartSummary";
 import { CartCard } from "../Components/CartCard/CartCard";
 import { v4 as uuid } from "uuid";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const { cart, removeFromCart, updateCart, totalOrderPrice, savedAmount } =
     useCart();
   const { wishlist, addToWishlist } = useWishlist();
-  const { getDefaultAddress, addresses, getAddresses } = useAddress();
+  const { getDefaultAddress, addresses } = useAddress();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [coupon, setCoupon] = useState(0);
   const navigate = useNavigate();

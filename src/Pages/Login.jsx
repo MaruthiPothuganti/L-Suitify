@@ -1,9 +1,10 @@
+import "./CSS/login.css";
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import "./CSS/login.css";
 import { useAuth } from "../Context/AuthContext";
 import { ACTION_TYPE } from "../Utils/constants";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const { dispatchUserAuth } = useAuth();
@@ -43,15 +44,27 @@ export default function Login() {
         },
       });
       if (loginResp.status === 200) {
+        console.log(loginResp);
         dispatchUserAuth({
           type: LOGIN,
           payload: loginResp,
         });
-
+        toast.success(
+          `Welcome ${loginResp.data.foundUser.firstName} ${loginResp.data.foundUser.lastName}`
+        );
         navigate(from, { replace: true });
       }
     } catch (error) {
-      console.log(error);
+      setCredentials(initialCredentialState);
+      if (error.response.status === 404) {
+        toast.error("User Not Found");
+      } else if (error.response.status === 401) {
+        toast.error("Invalid credentials");
+      } else if (error.response.status === 408) {
+        toast.error("Request Timeout. Try Again");
+      } else if (error.response.status === 500) {
+        toast.error("Internal Server Error.Please Try after Some Time");
+      }
     }
   };
 

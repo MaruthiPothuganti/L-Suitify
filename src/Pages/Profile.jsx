@@ -1,6 +1,7 @@
 import "./CSS/profile.css";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
+import { toast } from "react-toastify";
 import { ACTION_TYPE } from "../Utils/constants";
 
 export function Profile() {
