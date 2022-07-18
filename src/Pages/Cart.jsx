@@ -1,6 +1,5 @@
 import "./CSS/cart.css";
 import { useState } from "react";
-import axios from "axios";
 import { useCart } from "../Context/CartContext";
 import { useWishlist } from "../Context/WishlistContext";
 import { useAddress } from "../Context/AddressContext";
@@ -19,7 +18,6 @@ const Cart = () => {
     updateCart,
     totalOrderPrice,
     emptyCart,
-    setCart,
     savedAmount,
   } = useCart();
   const { wishlist, addToWishlist } = useWishlist();
@@ -88,11 +86,10 @@ const Cart = () => {
           mobile: defaultAddress.mobile,
           paymentId: response.razorpay_payment_id,
         };
-        console.log(orderData);
+        emptyCart();
         localStorage.setItem("userOrders", JSON.stringify(orderData));
         navigate("/OrderSummary", { state: orderData });
         toast.success("Order Confirmed");
-        emptyCart();
       },
       prefill: {
         name: "L-Suitify",
@@ -144,6 +141,9 @@ const Cart = () => {
               <div className="orderSummary">
                 <h2>Cart Summary:-</h2>
                 <CartSummary cart={cart} finalPrice={finalPrice} />
+                <span className="savedAmount padding-l">
+                  You will be ₹{savedAmount} on this order
+                </span>
                 <div className="orderBtn padding-s">
                   <Modal
                     show={isModalOpen}

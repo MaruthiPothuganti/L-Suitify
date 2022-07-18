@@ -16,6 +16,7 @@ const CartListContext = ({ children }) => {
     if (isAuthenticated) {
       getCartProducts();
     }
+
     // eslint-disable-next-line
   }, [isAuthenticated]);
 

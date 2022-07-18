@@ -55,6 +55,11 @@
 	justify-content: space-between;
 }
 
+.savedAmount{
+	color: var(--success-color);
+	font-weight: 600;
+}
+
   @media only screen and (max-width: 580px) {
         html{
 			font-size: 62.5%;
