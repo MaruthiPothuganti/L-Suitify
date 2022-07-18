@@ -1,10 +1,10 @@
 import "./orderSummary.css";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { CheckOutCard } from "../../Components/CartCard/CheckOutCard";
 
 export function OrderSummary() {
   const { state } = useLocation();
-  const { orderId, products, amount, name, mobile, paymentId } = state;
+  const { orderId, products, amount, name, mobile } = state;
   return (
     <main className="flex-center">
       <section className="checkout flex-center">

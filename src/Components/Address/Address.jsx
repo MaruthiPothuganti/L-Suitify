@@ -17,13 +17,12 @@ export const Address = () => {
     state: "",
     country: "",
     ZIP: "",
-    default: false,
+    defaultAddrs: false,
   };
   const [addrss, setAddrss] = useState(initialAddressState);
 
   const updateHandler = (address) => {
     setIsAddressModal(true);
-    console.log(address);
     setAddrss(address);
   };
 
@@ -46,7 +45,7 @@ export const Address = () => {
           <div className="addressCard" key={address._id}>
             <h2>
               {address.fullName}{" "}
-              {address.default ? (
+              {address.defaultAddrs ? (
                 <span className="defAddress">default</span>
               ) : (
                 ""

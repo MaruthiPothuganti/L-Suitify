@@ -60,7 +60,7 @@ const AddressContext = ({ children }) => {
   };
 
   const getDefaultAddress = (addresses) => {
-    return addresses.filter((address) => address.default === true)[0];
+    return addresses.filter((address) => address.defaultAddrs === true)[0];
   };
 
   return (

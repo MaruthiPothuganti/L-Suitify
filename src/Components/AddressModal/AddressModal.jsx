@@ -118,6 +118,17 @@ export function AddressModal({
                 setAddrss({ ...addrss, ZIP: e.target.value });
               }}
             />
+            {addrss._id ? (
+              <input
+                type="checkbox"
+                name="defAdrs"
+                checked={addrss.defaultAddrs === true}
+                value={addrss.ZIP}
+                onChange={() => {
+                  setAddrss({ ...addrss, defaultAddrs: !addrss.defaultAddrs });
+                }}
+              />
+            ) : null}
             {error ? (
               <span className="error">
                 <i className="fas fa-info-circle"></i> {error}

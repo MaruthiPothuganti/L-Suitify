@@ -2,7 +2,6 @@ import "./CSS/Productlisting.css";
 import { Filters } from "../Components/Filters/Filters";
 import { ProductCard } from "../Molecules/ProductCard";
 import { useFilter } from "../Context/ProductContext";
-import { toast } from "react-toastify";
 import {
   sortProductsByCategory,
   sortProductsByPrice,

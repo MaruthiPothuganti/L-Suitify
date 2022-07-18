@@ -70,7 +70,7 @@ export function makeServer({ environment = "development" } = {}) {
             state: "Pakisthan",
             country:"India",
             ZIP: '000001',
-            default: true,
+            defaultAddrs: true,
           }]
         })
       );

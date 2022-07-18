@@ -16,14 +16,14 @@ const WishlistContext = ({ children }) => {
         url: "/api/user/wishlist",
         headers: { authorization: token },
       });
-    }
+    } // eslint-disable-next-line
   }, [isAuthenticated]);
 
   useEffect(() => {
     if (response) {
       const newList = response.wishlist;
       setWishlist(newList);
-    }
+    } // eslint-disable-next-line
   }, [response]);
 
   const addToWishlist = (product) => {

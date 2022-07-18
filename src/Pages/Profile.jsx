@@ -14,7 +14,7 @@ export function Profile() {
     dispatchUserAuth({
       type: LOGOUT,
     });
-
+    toast.info("Logout Successful");
     navigate("/", { replace: true });
   };
 

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 export const Filters = () => {
   const { filterState, filterDispatch } = useFilter();
-  const { filters, categories, status } = filterState;
+  const { filters, categories } = filterState;
   const {
     HIGH_TO_LOW,
     LOW_TO_HIGH,
@@ -27,6 +27,7 @@ export const Filters = () => {
             filterDispatch({
               type: CLEAR,
             });
+            toast.info("Filters Cleared. Displaying all Products");
           }}
         >
           Clear

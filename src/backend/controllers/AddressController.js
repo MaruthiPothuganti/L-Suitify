@@ -119,7 +119,7 @@ export const updateAddressHandler = function (schema, request) {
       );
     }
     const userAddress = schema.users.findBy({ _id: userId }).address;
-    const { address:{ fullName, mobile, houseNo, city, state, country,ZIP} } = JSON.parse(request.requestBody);
+    const { address:{ fullName, mobile, houseNo, city, state, country, ZIP, defaultAddrs} } = JSON.parse(request.requestBody);
 
       userAddress.forEach((address) => {
         if (address._id === addressId) {
@@ -129,7 +129,8 @@ export const updateAddressHandler = function (schema, request) {
           address.city= city;
           address.state= state;
           address.country= country;
-          address.ZIP= ZIP;
+          address.ZIP = ZIP;
+          address.defaultAddrs = defaultAddrs ;
           address.updatedAt = formatDate();
         }
       });

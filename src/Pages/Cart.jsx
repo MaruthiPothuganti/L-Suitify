@@ -82,6 +82,7 @@ const Cart = () => {
         };
 
         navigate("/OrderSummary", { state: orderData });
+        toast.success("Order Confirmed");
       },
       prefill: {
         name: "L-Suitify",
