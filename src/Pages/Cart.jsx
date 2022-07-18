@@ -88,7 +88,8 @@ const Cart = () => {
           mobile: defaultAddress.mobile,
           paymentId: response.razorpay_payment_id,
         };
-
+        console.log(orderData);
+        localStorage.setItem("userOrders", JSON.stringify(orderData));
         navigate("/OrderSummary", { state: orderData });
         toast.success("Order Confirmed");
         emptyCart();

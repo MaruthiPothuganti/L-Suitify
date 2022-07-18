@@ -5,7 +5,7 @@ import { useAuth } from "./AuthContext";
 const CartContext = createContext();
 const CartListContext = ({ children }) => {
   const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("userCart")) ?? null
+    JSON.parse(localStorage.getItem("userCart")) ?? []
   );
 
   const { response, loading, fireRequest } = useAxios();

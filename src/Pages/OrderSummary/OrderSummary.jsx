@@ -4,7 +4,9 @@ import { CheckOutCard } from "../../Components/CartCard/CheckOutCard";
 
 export function OrderSummary() {
   const { state } = useLocation();
-  const { orderId, products, amount, name, mobile } = state;
+  const { orderId, products, amount, name, mobile } =
+    JSON.parse(localStorage.getItem("userOrders")) ?? state;
+
   return (
     <main className="flex-center">
       <section className="orderStatus flex-center">
