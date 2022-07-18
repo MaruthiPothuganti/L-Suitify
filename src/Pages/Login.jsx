@@ -44,7 +44,6 @@ export default function Login() {
         },
       });
       if (loginResp.status === 200) {
-        console.log(loginResp);
         dispatchUserAuth({
           type: LOGIN,
           payload: loginResp,

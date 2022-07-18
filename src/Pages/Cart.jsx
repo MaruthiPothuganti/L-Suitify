@@ -161,7 +161,6 @@ const Cart = () => {
                     className="btn btn-primary"
                     onClick={() => {
                       displayRazorpay(finalPrice);
-                      console.log("finalPrice", finalPrice);
                     }}
                   >
                     Place Order

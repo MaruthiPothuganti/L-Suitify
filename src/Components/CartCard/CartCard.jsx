@@ -29,6 +29,7 @@ export function CartCard({
             className="btn"
             onClick={() => {
               updateCart(prod, "decrement");
+              toast.info("Cart Updated");
             }}
             disabled={prod.qty === 1}
           >
@@ -39,6 +40,7 @@ export function CartCard({
             className="btn"
             onClick={() => {
               updateCart(prod, "increment");
+              toast.info("Cart Updated");
             }}
           >
             +
@@ -54,6 +56,7 @@ export function CartCard({
               className="btn btn-primary"
               onClick={() => {
                 addToWishlist(prod);
+                toast.info("Product added to Wishlist");
               }}
             >
               Wish it
@@ -61,7 +64,10 @@ export function CartCard({
           )}
           <button
             className="btn btn-secondary"
-            onClick={() => removeFromCart(prod)}
+            onClick={() => {
+              removeFromCart(prod);
+              toast.info("Cart Updated. Product removed");
+            }}
           >
             Uncart
           </button>

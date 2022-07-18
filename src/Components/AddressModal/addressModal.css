@@ -33,3 +33,8 @@
 .form-fields{
     min-width: 30rem;
 }
+
+.error{
+  font-weight: 700;
+  color: var(--danger-color-lt);
+}

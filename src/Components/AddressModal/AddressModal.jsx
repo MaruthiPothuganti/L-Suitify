@@ -1,4 +1,5 @@
 import "./addressModal.css";
+import { useState } from "react";
 import { useAddress } from "../../Context/AddressContext";
 import { toast } from "react-toastify";
 
@@ -10,36 +11,46 @@ export function AddressModal({
   initialAddressState,
 }) {
   const { addAddress, updateAddress } = useAddress();
+  const [error, setError] = useState(null);
 
   const showHideClassName = show
     ? "addressModal display-block"
     : "addressModal display-none";
 
-  const formHandler = (e) => {
-    e.preventDefault();
-    addressHandler();
-  };
-
   const addressHandler = () => {
-    addAddress(addrss);
-    handleClose(false);
-    setAddrss(initialAddressState);
+    if (
+      addrss.fullName !== "" &&
+      addrss.mobile !== "" &&
+      addrss.houseNo !== "" &&
+      addrss.city !== "" &&
+      addrss.state !== "" &&
+      addrss.country !== "" &&
+      addrss.ZIP !== ""
+    ) {
+      addAddress(addrss);
+      toast.info("New Address Added");
+      handleClose(false);
+      setAddrss(initialAddressState);
+    }
+    setError("Please Fillout all fields");
   };
 
   const updateHandler = () => {
     updateAddress(addrss);
     handleClose(false);
     setAddrss(initialAddressState);
+    toast.info("Address Updated");
   };
 
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
-        <form onSubmit={formHandler}>
+        <form>
           <div className="form-fields">
             <h1>Add New Address</h1>
             <input
               type="text"
+              required={true}
               name="fullname"
               placeholder="Full Name"
               value={addrss.fullName}
@@ -49,6 +60,7 @@ export function AddressModal({
             />
             <input
               type="text"
+              required={true}
               name="mobileno"
               placeholder="Phone Number"
               value={addrss.mobile}
@@ -58,6 +70,7 @@ export function AddressModal({
             />
             <input
               type="text"
+              required={true}
               name="houseNo"
               placeholder="House Number"
               value={addrss.houseNo}
@@ -67,6 +80,7 @@ export function AddressModal({
             />
             <input
               type="text"
+              required={true}
               name="city"
               placeholder="City"
               value={addrss.city}
@@ -76,6 +90,7 @@ export function AddressModal({
             />
             <input
               type="text"
+              required={true}
               name="state"
               placeholder="State"
               value={addrss.state}
@@ -85,6 +100,7 @@ export function AddressModal({
             />
             <input
               type="text"
+              required={true}
               name="country"
               placeholder="Country"
               value={addrss.country}
@@ -94,6 +110,7 @@ export function AddressModal({
             />
             <input
               type="text"
+              required={true}
               name="zip"
               placeholder="PinCode"
               value={addrss.ZIP}
@@ -101,6 +118,11 @@ export function AddressModal({
                 setAddrss({ ...addrss, ZIP: e.target.value });
               }}
             />
+            {error ? (
+              <span className="error">
+                <i className="fas fa-info-circle"></i> {error}
+              </span>
+            ) : null}
             {addrss._id ? (
               <button
                 type="button"
@@ -110,14 +132,22 @@ export function AddressModal({
                 Update
               </button>
             ) : (
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={addressHandler}
+              >
                 Add
               </button>
             )}
             <button
               type="button"
               className="btn btn-ol-accent"
-              onClick={() => handleClose(false)}
+              onClick={() => {
+                setAddrss(initialAddressState);
+                handleClose(false);
+                setError(null);
+              }}
             >
               Close
             </button>
