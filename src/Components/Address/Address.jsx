@@ -9,7 +9,6 @@ export const Address = () => {
   const [isAddressModalOpen, setIsAddressModal] = useState(false);
 
   const initialAddressState = {
-    // _id: null,
     fullName: "",
     mobile: "",
     houseNo: "",
