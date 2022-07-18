@@ -44,7 +44,7 @@ export function AddressModal({
 
   return (
     <div className={showHideClassName}>
-      <section className="modal-main">
+      <section className="addressModal-main">
         <form>
           <div className="form-fields">
             <h1>Add New Address</h1>

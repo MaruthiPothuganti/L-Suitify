@@ -156,6 +156,7 @@ const Cart = () => {
                     })}
                   </Modal>
                   <button className="btn" onClick={() => setIsModalOpen(true)}>
+                    <i className="fas fa-tag fa-lg padding-s"></i>
                     Apply coupon
                   </button>
                   <button

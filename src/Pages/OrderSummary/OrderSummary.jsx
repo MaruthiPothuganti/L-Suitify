@@ -7,17 +7,20 @@ export function OrderSummary() {
   const { orderId, products, amount, name, mobile } = state;
   return (
     <main className="flex-center">
-      <section className="checkout flex-center">
-        <div>
-          <h1>Order Confirmed</h1>
+      <section className="orderStatus flex-center">
+        <div className="padding-l">
+          <h1 className="ordrConfirmation">Order Confirmed</h1>
           <h3>Order Id : {orderId}</h3>
           <h3>Total Amount :{amount}</h3>
           <h2> Order Will be delivered to :</h2>
           <h3>{name}</h3>
           <h3>Phone Number : {mobile}</h3>
         </div>
-        <div>
-          <CheckOutCard products={products} />
+        <div className="padding-v-l">
+          <h2 className="padding-s">Products Ordered: </h2>
+          <div className="orderedProds">
+            <CheckOutCard products={products} />
+          </div>
         </div>
       </section>
     </main>
