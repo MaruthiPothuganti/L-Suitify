@@ -7,10 +7,9 @@
 }
 
 .addressCard:hover{
-    cursor: pointer;
+    cursor: default;
     transform: scale(1.05);
 }
-
 
 .defAddress{
     font-size: 0.9rem;
@@ -19,6 +18,17 @@
     font-weight: 400;
     padding: 0.3rem;
     border-radius: 5px;
+}
+
+.addressCTA{
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    padding: 1rem 0 0 0;
+}
+
+.addressCTA i{
+    cursor: pointer;
 }
 
 
