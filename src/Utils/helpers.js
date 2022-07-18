@@ -19,10 +19,6 @@ export const initialFilterState = {
         }
     }
 
-export const userDataInitialState = {
-        cart: [],
-        wishlist:[]
-    }
 
 export const initialAuthState = {
     token: "",
@@ -30,7 +26,6 @@ export const initialAuthState = {
     name: "",
     fullName:"",
     email: "",
-    password: "",
 };
 
 export const isItemInList = (item, arr) => {

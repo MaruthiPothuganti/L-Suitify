@@ -1,5 +1,6 @@
 import "./CSS/cart.css";
 import { useState } from "react";
+import axios from "axios";
 import { useCart } from "../Context/CartContext";
 import { useWishlist } from "../Context/WishlistContext";
 import { useAddress } from "../Context/AddressContext";
@@ -12,8 +13,15 @@ import { v4 as uuid } from "uuid";
 import { toast } from "react-toastify";
 
 const Cart = () => {
-  const { cart, removeFromCart, updateCart, totalOrderPrice, savedAmount } =
-    useCart();
+  const {
+    cart,
+    removeFromCart,
+    updateCart,
+    totalOrderPrice,
+    emptyCart,
+    setCart,
+    savedAmount,
+  } = useCart();
   const { wishlist, addToWishlist } = useWishlist();
   const { getDefaultAddress, addresses } = useAddress();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -83,6 +91,7 @@ const Cart = () => {
 
         navigate("/OrderSummary", { state: orderData });
         toast.success("Order Confirmed");
+        emptyCart();
       },
       prefill: {
         name: "L-Suitify",

@@ -9,7 +9,9 @@ const AddressContext = ({ children }) => {
   const { userAuthState } = useAuth();
   const { token, isAuthenticated } = userAuthState;
 
-  const [addresses, setAddresses] = useState([]);
+  const [addresses, setAddresses] = useState(
+    JSON.parse(localStorage.getItem("userAddress")) ?? []
+  );
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -21,6 +23,7 @@ const AddressContext = ({ children }) => {
   useEffect(() => {
     if (response) {
       const newList = response.address;
+      localStorage.setItem("userAddress", JSON.stringify(response.address));
       setAddresses(newList);
     }
   }, [response]);

@@ -10,7 +10,8 @@ export const userDetailsReducer = (state, action) => {
                 token: action.payload.data.encodedToken,
                 name: action.payload.data.foundUser.firstName,
                 fullName: action.payload.data.foundUser.firstName +" "+action.payload.data.foundUser.lastName,
-                email: action.payload.data.foundUser.email
+                email: action.payload.data.foundUser.email,
+                isAuthenticated: true,
             }));
             return {
                 ...state,

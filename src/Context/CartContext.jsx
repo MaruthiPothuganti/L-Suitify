@@ -4,7 +4,10 @@ import { useAuth } from "./AuthContext";
 
 const CartContext = createContext();
 const CartListContext = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("userCart")) ?? null
+  );
+
   const { response, loading, fireRequest } = useAxios();
   const { userAuthState } = useAuth();
   const { token, isAuthenticated } = userAuthState;
@@ -19,6 +22,7 @@ const CartListContext = ({ children }) => {
   useEffect(() => {
     if (response) {
       const newList = response.cart;
+      localStorage.setItem("userCart", JSON.stringify(response.cart));
       setCart(newList);
     }
   }, [response]);
@@ -57,6 +61,14 @@ const CartListContext = ({ children }) => {
     });
   };
 
+  const emptyCart = () => {
+    fireRequest({
+      method: "delete",
+      url: "/api/user/cart",
+      headers: { authorization: token },
+    });
+  };
+
   let totalOrderPrice = cart.reduce(
     (acc, curr) => acc + Number(curr.discountedPrice) * curr.qty,
     0
@@ -77,6 +89,7 @@ const CartListContext = ({ children }) => {
         updateCart,
         savedAmount,
         totalOrderPrice,
+        emptyCart,
       }}
     >
       {children}

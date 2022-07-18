@@ -7,7 +7,7 @@ const AuthorisationContext = createContext();
 const AuthContext = ({ children }) => {
   const [userAuthState, dispatchUserAuth] = useReducer(
     userDetailsReducer,
-    initialAuthState
+    JSON.parse(localStorage.getItem("userData")) ?? initialAuthState
   );
 
   return (

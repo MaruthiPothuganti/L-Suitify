@@ -14,6 +14,7 @@ import {
   getCartItemsHandler,
   removeItemFromCartHandler,
   updateCartItemHandler,
+  emptyCartHandler
 } from "./backend/controllers/CartController";
 import {
   getAllCategoriesHandler,
@@ -100,6 +101,11 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/cart/:productId",
         removeItemFromCartHandler.bind(this)
       );
+      this.delete(
+        "/user/cart",
+        emptyCartHandler.bind(this)
+      );
+
 
        // address routes (private)
       this.get("/user/address", getAddressHandler.bind(this));
