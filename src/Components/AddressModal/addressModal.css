@@ -38,3 +38,9 @@
   font-weight: 700;
   color: var(--danger-color-lt);
 }
+
+.defAdrs{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}

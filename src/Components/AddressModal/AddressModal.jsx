@@ -120,18 +120,22 @@ export function AddressModal({
             />
             {addresses.length > 1 ? (
               addrss._id ? (
-                <input
-                  type="checkbox"
-                  name="defAdrs"
-                  checked={addrss.defaultAddrs === true}
-                  value={addrss.ZIP}
-                  onChange={() => {
-                    setAddrss({
-                      ...addrss,
-                      defaultAddrs: !addrss.defaultAddrs,
-                    });
-                  }}
-                />
+                <label htmlFor="defAdrs" className="defAdrs">
+                  <input
+                    type="checkbox"
+                    name="defAdrs"
+                    id="defAdrs"
+                    checked={addrss.defaultAddrs === true}
+                    value={addrss.ZIP}
+                    onChange={() => {
+                      setAddrss({
+                        ...addrss,
+                        defaultAddrs: !addrss.defaultAddrs,
+                      });
+                    }}
+                  />{" "}
+                  Make this Address as default
+                </label>
               ) : null
             ) : null}
             {error ? (
