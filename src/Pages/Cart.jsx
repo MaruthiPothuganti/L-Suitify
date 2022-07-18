@@ -2,17 +2,26 @@ import "./CSS/cart.css";
 import { useState } from "react";
 import { useCart } from "../Context/CartContext";
 import { useWishlist } from "../Context/WishlistContext";
+import { useAddress } from "../Context/AddressContext";
 import { isItemInList } from "../Utils/helpers";
 import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "../Components/Modal/Modal";
 import { CartSummary } from "../Components/CartSummary/CartSummary";
 import { CartCard } from "../Components/CartCard/CartCard";
 import { v4 as uuid } from "uuid";
+import { toast } from "react-toastify";
 
 const Cart = () => {
-  const { cart, removeFromCart, updateCart, totalOrderPrice, savedAmount } =
-    useCart();
+  const {
+    cart,
+    removeFromCart,
+    updateCart,
+    totalOrderPrice,
+    emptyCart,
+    savedAmount,
+  } = useCart();
   const { wishlist, addToWishlist } = useWishlist();
+  const { getDefaultAddress, addresses } = useAddress();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [coupon, setCoupon] = useState(0);
   const navigate = useNavigate();
@@ -73,16 +82,18 @@ const Cart = () => {
           orderId,
           products: [...cart],
           amount: amount,
-          name: "Maruthi Pothuganti",
-          mobile: 9988774455,
+          name: defaultAddress.fullName,
+          mobile: defaultAddress.mobile,
           paymentId: response.razorpay_payment_id,
         };
-
+        emptyCart();
+        localStorage.setItem("userOrders", JSON.stringify(orderData));
         navigate("/OrderSummary", { state: orderData });
+        toast.success("Order Confirmed");
       },
       prefill: {
-        name: "John ImranReddy",
-        email: "johnimranreddy@gmail.com",
+        name: "L-Suitify",
+        email: "l-Suitify@org.co",
         contact: "9999999999",
       },
       theme: {
@@ -93,72 +104,111 @@ const Cart = () => {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   }
+  let defaultAddress = getDefaultAddress(addresses);
 
   //-----------------------------------
   return (
     <div className="mainContainer">
       <h1 className="text-center padding-m">Cart ({cart.length}) </h1>
-      <div className="cartAndSummary">
-        <div className="cartContainer padding-l">
-          {cart.length > 0 ? (
-            <CartCard
-              cart={cart}
-              removeFromCart={removeFromCart}
-              updateCart={updateCart}
-              wishlist={wishlist}
-              addToWishlist={addToWishlist}
-              isItemInList={isItemInList}
-            />
-          ) : (
-            <div className="flex-column-center productContainer">
-              <h2>No Products here. Go and Add some</h2>
-              <button>
-                <Link to="/ProductListing">Add Products</Link>
-              </button>
+      {cart.length > 0 ? (
+        <div>
+          <div className="addressContainer">
+            {defaultAddress ? (
+              <div className="defaultAddress">
+                <h2>{defaultAddress.fullName}</h2>
+                <h3>
+                  {defaultAddress.houseNo}, {defaultAddress.city},{" "}
+                  {defaultAddress.city}, {defaultAddress.state},{" "}
+                  {defaultAddress.country}, {defaultAddress.mobile},{" "}
+                  {defaultAddress.ZIP}.
+                </h3>
+              </div>
+            ) : (
+              <h2 className="defaultAddress">
+                {" "}
+                Yo Human, Where do you want your packages to be delivered. Go
+                add one address as Default{" "}
+              </h2>
+            )}
+            <Link to="/Profile/address">
+              <i className="fa-solid fa-pen-to-square fa-2xl"></i>
+            </Link>
+          </div>
+          <div className="cartAndSummary">
+            <div className="cartContainer padding-l">
+              <CartCard
+                cart={cart}
+                removeFromCart={removeFromCart}
+                updateCart={updateCart}
+                wishlist={wishlist}
+                addToWishlist={addToWishlist}
+                isItemInList={isItemInList}
+              />
             </div>
-          )}
-        </div>
-        <div className="cartSummary flex-row-center">
-          <div className="orderSummary">
-            <h2>Cart Summary:-</h2>
-            <CartSummary cart={cart} finalPrice={finalPrice} />
-            <div className="orderBtn padding-s">
-              <Modal
-                show={isModalOpen}
-                handleClose={() => setIsModalOpen(false)}
-              >
-                {couponList.map((ele) => {
-                  return (
-                    <label htmlFor={ele.id} key={ele.id}>
-                      <input
-                        type={ele.type}
-                        name={ele.name}
-                        id={ele.id}
-                        className={ele.name}
-                        onChange={() => setCoupon(ele.id)}
-                        checked={coupon === ele.id}
-                      />{" "}
-                      {ele.id !== 0 ? `Dhamaka ${ele.id}% Off` : "None"}
-                    </label>
-                  );
-                })}
-              </Modal>
-              <button className="btn" onClick={() => setIsModalOpen(true)}>
-                Apply coupon
-              </button>
-              <button
-                className="btn btn-primary"
-                onClick={() => {
-                  displayRazorpay(finalPrice);
-                  console.log("finalPrice", finalPrice);
-                }}
-              >
-                Place Order
-              </button>
+            <div className="cartSummary flex-row-center">
+              <div className="orderSummary">
+                <h2>Cart Summary:-</h2>
+                <CartSummary cart={cart} finalPrice={finalPrice} />
+                <span className="savedAmount padding-l">
+                  You will be ₹{savedAmount} on this order
+                </span>
+                <div className="orderBtn padding-s">
+                  <Modal
+                    show={isModalOpen}
+                    handleClose={() => setIsModalOpen(false)}
+                  >
+                    {couponList.map((ele) => {
+                      return (
+                        <label htmlFor={ele.id} key={ele.id}>
+                          <input
+                            type={ele.type}
+                            name={ele.name}
+                            id={ele.id}
+                            className={ele.name}
+                            onChange={() => setCoupon(ele.id)}
+                            checked={coupon === ele.id}
+                          />{" "}
+                          {ele.id !== 0 ? `Dhamaka ${ele.id}% Off` : "None"}
+                        </label>
+                      );
+                    })}
+                  </Modal>
+                  <button className="btn" onClick={() => setIsModalOpen(true)}>
+                    <i className="fas fa-tag fa-lg padding-s"></i>
+                    Apply coupon
+                  </button>
+                  {defaultAddress ? (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        displayRazorpay(finalPrice);
+                      }}
+                    >
+                      Place Order
+                    </button>
+                  ) : (
+                    <button
+                      className="disablebtn btn btn-primary"
+                      disabled={true}
+                    >
+                      Place Order
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="mainContainer padding-l">
+          <div className="flex-column-center productContainer">
+            <h2>No Products here. Go and Add some</h2>
+            <button>
+              <Link to="/ProductListing">Add Products</Link>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

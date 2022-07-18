@@ -1,3 +1,21 @@
-.checkout{
-    width: 80%;
+
+.orderStatus{
+    padding: 2rem;
+    height: 80vh;
+    flex-wrap: wrap;
+}
+
+.ordrConfirmation{
+    color: var(--success-color);
+    font-size: 3rem;
+}
+
+.orderedProds{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    height: 50rem;
+    overflow-y:auto;
+    overflow-x: auto;
 }

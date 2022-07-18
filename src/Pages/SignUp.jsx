@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
 export default function SignUp() {
   return (
     <div className="login">

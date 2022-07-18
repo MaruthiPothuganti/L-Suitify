@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useWishlist } from "../Context/WishlistContext";
 import { useCart } from "../Context/CartContext";
+import { toast } from "react-toastify";
 import { isItemInList } from "../Utils/helpers";
 
 const Wishlist = () => {
@@ -9,7 +10,7 @@ const Wishlist = () => {
 
   return (
     <div className="mainContainer">
-      <h1 className="text-center padding-m">Wishlist</h1>
+      <h1 className="text-center padding-m">Wishlist({wishlist.length})</h1>
       <div className="flex-row-spacearound padding-l">
         {wishlist.length > 0 ? (
           wishlist.map((product) => (
@@ -38,14 +39,20 @@ const Wishlist = () => {
                 ) : (
                   <button
                     className="card-btn card-btn-primary"
-                    onClick={() => addToCart(product)}
+                    onClick={() => {
+                      addToCart(product);
+                      toast.info("Product added to Cart");
+                    }}
                   >
                     Add to cart
                   </button>
                 )}
                 <button
                   className="card-btn card-btn-secondary"
-                  onClick={() => removeFromWishlist(product)}
+                  onClick={() => {
+                    removeFromWishlist(product);
+                    toast.info("Product removed from Wishlist");
+                  }}
                 >
                   Remove
                 </button>

@@ -7,30 +7,40 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.modal-main {
+.addressModal-main {
   display: flex;
   flex-direction: column;
+  align-items: center;
   position:fixed;
   background: white;
-  width: 80%;
+  width: 70%;
   height: auto;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
   padding: 2rem;
+
 }
 
 .display-block {
-  display: block;
+  display: flex;
 }
 
 .display-none {
   display: none;
 }
 
-.btnGroup{
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
+.form-fields{
+    min-width: 30rem;
 }
 
+.error{
+  font-weight: 700;
+  color: var(--danger-color-lt);
+}
+
+.defAdrs{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}

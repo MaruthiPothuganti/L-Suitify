@@ -4,7 +4,9 @@ import { useAuth } from "./AuthContext";
 
 const WishContext = createContext();
 const WishlistContext = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]);
+  const [wishlist, setWishlist] = useState(
+    JSON.parse(localStorage.getItem("userWishlist")) ?? []
+  );
   const { response, loading, fireRequest } = useAxios();
   const { userAuthState } = useAuth();
   const { token, isAuthenticated } = userAuthState;
@@ -16,14 +18,15 @@ const WishlistContext = ({ children }) => {
         url: "/api/user/wishlist",
         headers: { authorization: token },
       });
-    }
+    } // eslint-disable-next-line
   }, [isAuthenticated]);
 
   useEffect(() => {
     if (response) {
       const newList = response.wishlist;
+      localStorage.setItem("userWishlist", JSON.stringify(response.wishlist));
       setWishlist(newList);
-    }
+    } // eslint-disable-next-line
   }, [response]);
 
   const addToWishlist = (product) => {
