@@ -9,7 +9,7 @@ const Wishlist = () => {
 
   return (
     <div className="mainContainer">
-      <h1 className="text-center padding-m">Wishlist</h1>
+      <h1 className="text-center padding-m">Wishlist({wishlist.length})</h1>
       <div className="flex-row-spacearound padding-l">
         {wishlist.length > 0 ? (
           wishlist.map((product) => (

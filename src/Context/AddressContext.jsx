@@ -71,6 +71,7 @@ const AddressContext = ({ children }) => {
         removeAddress,
         updateAddress,
         getDefaultAddress,
+        getAddresses,
       }}
     >
       {children}

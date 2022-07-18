@@ -1,5 +1,5 @@
 import "./CSS/cart.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../Context/CartContext";
 import { useWishlist } from "../Context/WishlistContext";
 import { useAddress } from "../Context/AddressContext";
@@ -14,7 +14,7 @@ const Cart = () => {
   const { cart, removeFromCart, updateCart, totalOrderPrice, savedAmount } =
     useCart();
   const { wishlist, addToWishlist } = useWishlist();
-  const { getDefaultAddress, addresses } = useAddress();
+  const { getDefaultAddress, addresses, getAddresses } = useAddress();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [coupon, setCoupon] = useState(0);
   const navigate = useNavigate();
@@ -95,88 +95,91 @@ const Cart = () => {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   }
-
   let defaultAddress = getDefaultAddress(addresses);
 
   //-----------------------------------
   return (
     <div className="mainContainer">
       <h1 className="text-center padding-m">Cart ({cart.length}) </h1>
-      <div className="addressContainer">
-        <div className="defaultAddress">
-          <h2>{defaultAddress.fullName}</h2>
-          <h3>
-            {defaultAddress.houseNo}, {defaultAddress.city},{" "}
-            {defaultAddress.city}, {defaultAddress.state},{" "}
-            {defaultAddress.country}, {defaultAddress.mobile},{" "}
-            {defaultAddress.ZIP}.
-          </h3>
-        </div>
-        <Link to="/Profile/address">
-          <i className="fa-solid fa-pen-to-square fa-2xl"></i>
-        </Link>
-      </div>
-      <div className="cartAndSummary">
-        <div className="cartContainer padding-l">
-          {cart.length > 0 ? (
-            <CartCard
-              cart={cart}
-              removeFromCart={removeFromCart}
-              updateCart={updateCart}
-              wishlist={wishlist}
-              addToWishlist={addToWishlist}
-              isItemInList={isItemInList}
-            />
-          ) : (
-            <div className="flex-column-center productContainer">
-              <h2>No Products here. Go and Add some</h2>
-              <button>
-                <Link to="/ProductListing">Add Products</Link>
-              </button>
+      {cart.length > 0 ? (
+        <div>
+          <div className="addressContainer">
+            <div className="defaultAddress">
+              <h2>{defaultAddress.fullName}</h2>
+              <h3>
+                {defaultAddress.houseNo}, {defaultAddress.city},{" "}
+                {defaultAddress.city}, {defaultAddress.state},{" "}
+                {defaultAddress.country}, {defaultAddress.mobile},{" "}
+                {defaultAddress.ZIP}.
+              </h3>
             </div>
-          )}
-        </div>
-        <div className="cartSummary flex-row-center">
-          <div className="orderSummary">
-            <h2>Cart Summary:-</h2>
-            <CartSummary cart={cart} finalPrice={finalPrice} />
-            <div className="orderBtn padding-s">
-              <Modal
-                show={isModalOpen}
-                handleClose={() => setIsModalOpen(false)}
-              >
-                {couponList.map((ele) => {
-                  return (
-                    <label htmlFor={ele.id} key={ele.id}>
-                      <input
-                        type={ele.type}
-                        name={ele.name}
-                        id={ele.id}
-                        className={ele.name}
-                        onChange={() => setCoupon(ele.id)}
-                        checked={coupon === ele.id}
-                      />{" "}
-                      {ele.id !== 0 ? `Dhamaka ${ele.id}% Off` : "None"}
-                    </label>
-                  );
-                })}
-              </Modal>
-              <button className="btn" onClick={() => setIsModalOpen(true)}>
-                Apply coupon
-              </button>
-              <button
-                className="btn btn-primary"
-                onClick={() => {
-                  displayRazorpay(finalPrice);
-                  console.log("finalPrice", finalPrice);
-                }}
-              >
-                Place Order
-              </button>
+            <Link to="/Profile/address">
+              <i className="fa-solid fa-pen-to-square fa-2xl"></i>
+            </Link>
+          </div>
+          <div className="cartAndSummary">
+            <div className="cartContainer padding-l">
+              <CartCard
+                cart={cart}
+                removeFromCart={removeFromCart}
+                updateCart={updateCart}
+                wishlist={wishlist}
+                addToWishlist={addToWishlist}
+                isItemInList={isItemInList}
+              />
+            </div>
+            <div className="cartSummary flex-row-center">
+              <div className="orderSummary">
+                <h2>Cart Summary:-</h2>
+                <CartSummary cart={cart} finalPrice={finalPrice} />
+                <div className="orderBtn padding-s">
+                  <Modal
+                    show={isModalOpen}
+                    handleClose={() => setIsModalOpen(false)}
+                  >
+                    {couponList.map((ele) => {
+                      return (
+                        <label htmlFor={ele.id} key={ele.id}>
+                          <input
+                            type={ele.type}
+                            name={ele.name}
+                            id={ele.id}
+                            className={ele.name}
+                            onChange={() => setCoupon(ele.id)}
+                            checked={coupon === ele.id}
+                          />{" "}
+                          {ele.id !== 0 ? `Dhamaka ${ele.id}% Off` : "None"}
+                        </label>
+                      );
+                    })}
+                  </Modal>
+                  <button className="btn" onClick={() => setIsModalOpen(true)}>
+                    Apply coupon
+                  </button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      displayRazorpay(finalPrice);
+                      console.log("finalPrice", finalPrice);
+                    }}
+                  >
+                    Place Order
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="mainContainer padding-l">
+          <div className="flex-column-center productContainer">
+            <h2>No Products here. Go and Add some</h2>
+            <button>
+              <Link to="/ProductListing">Add Products</Link>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
