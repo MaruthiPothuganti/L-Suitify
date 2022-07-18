@@ -60,6 +60,11 @@
 	font-weight: 600;
 }
 
+.disablebtn{
+	cursor: not-allowed;
+	filter: grayscale(0.5);
+}
+
   @media only screen and (max-width: 580px) {
         html{
 			font-size: 62.5%;

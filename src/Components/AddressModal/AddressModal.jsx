@@ -10,7 +10,7 @@ export function AddressModal({
   setAddrss,
   initialAddressState,
 }) {
-  const { addAddress, updateAddress } = useAddress();
+  const { addAddress, updateAddress, addresses } = useAddress();
   const [error, setError] = useState(null);
 
   const showHideClassName = show
@@ -118,16 +118,21 @@ export function AddressModal({
                 setAddrss({ ...addrss, ZIP: e.target.value });
               }}
             />
-            {addrss._id ? (
-              <input
-                type="checkbox"
-                name="defAdrs"
-                checked={addrss.defaultAddrs === true}
-                value={addrss.ZIP}
-                onChange={() => {
-                  setAddrss({ ...addrss, defaultAddrs: !addrss.defaultAddrs });
-                }}
-              />
+            {addresses.length > 1 ? (
+              addrss._id ? (
+                <input
+                  type="checkbox"
+                  name="defAdrs"
+                  checked={addrss.defaultAddrs === true}
+                  value={addrss.ZIP}
+                  onChange={() => {
+                    setAddrss({
+                      ...addrss,
+                      defaultAddrs: !addrss.defaultAddrs,
+                    });
+                  }}
+                />
+              ) : null
             ) : null}
             {error ? (
               <span className="error">

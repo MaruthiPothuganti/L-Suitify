@@ -113,15 +113,23 @@ const Cart = () => {
       {cart.length > 0 ? (
         <div>
           <div className="addressContainer">
-            <div className="defaultAddress">
-              <h2>{defaultAddress.fullName}</h2>
-              <h3>
-                {defaultAddress.houseNo}, {defaultAddress.city},{" "}
-                {defaultAddress.city}, {defaultAddress.state},{" "}
-                {defaultAddress.country}, {defaultAddress.mobile},{" "}
-                {defaultAddress.ZIP}.
-              </h3>
-            </div>
+            {defaultAddress ? (
+              <div className="defaultAddress">
+                <h2>{defaultAddress.fullName}</h2>
+                <h3>
+                  {defaultAddress.houseNo}, {defaultAddress.city},{" "}
+                  {defaultAddress.city}, {defaultAddress.state},{" "}
+                  {defaultAddress.country}, {defaultAddress.mobile},{" "}
+                  {defaultAddress.ZIP}.
+                </h3>
+              </div>
+            ) : (
+              <h2 className="defaultAddress">
+                {" "}
+                Yo Human, Where do you want your packages to be delivered. Go
+                add one address as Default{" "}
+              </h2>
+            )}
             <Link to="/Profile/address">
               <i className="fa-solid fa-pen-to-square fa-2xl"></i>
             </Link>
@@ -169,14 +177,23 @@ const Cart = () => {
                     <i className="fas fa-tag fa-lg padding-s"></i>
                     Apply coupon
                   </button>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      displayRazorpay(finalPrice);
-                    }}
-                  >
-                    Place Order
-                  </button>
+                  {defaultAddress ? (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        displayRazorpay(finalPrice);
+                      }}
+                    >
+                      Place Order
+                    </button>
+                  ) : (
+                    <button
+                      className="disablebtn btn btn-primary"
+                      disabled={true}
+                    >
+                      Place Order
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
