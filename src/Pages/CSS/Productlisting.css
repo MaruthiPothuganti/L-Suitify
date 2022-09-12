@@ -12,10 +12,16 @@
 }
 
 .mobFilters{
-    display: none;
+    display: block;
     padding: 1rem;
     border: 1px solid black;
     margin: 2rem;
+}
+
+.dropDownBTN{
+    padding: 1rem;
+    background: transparent;
+    cursor: pointer;
 }
 
 
@@ -26,10 +32,8 @@
 }
 .mobFilters{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-}
-.dropDownBTN{
-    background: transparent;
-    cursor: pointer;
+    gap: 1rem;
 }
 }
