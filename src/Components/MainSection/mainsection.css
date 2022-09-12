@@ -7,8 +7,13 @@ main{
 
 .homeSectionOne, .homeSectionThree{
     position: relative;
-}
 
+}
+.homeSectionThree{
+    background: url("https://res.cloudinary.com/doo5jbomi/image/upload/v1649035748/Assets%20For%20Ecom/Ribbons/bg-2_h3pysw.jpg");
+    margin: 1rem 0;
+    padding: 1rem 0rem 1rem 0;
+}
 
 
 .heroBanner {
@@ -29,7 +34,7 @@ main{
 }
 
 .heroHeading{
-    font-size: 4rem;
+    font-size: 4em;
     color: var( --primary-bg-color);
     margin-bottom: 1rem;
 }
@@ -58,7 +63,6 @@ main{
 }
 
 .bannerContent{
-    position: absolute;
     color: var(--secondary-white);
 }
 

@@ -58,10 +58,6 @@ export function Main() {
       </div>
 
       <div className="homeSectionThree flex-center padding-xxl">
-        <img
-          src="https://res.cloudinary.com/doo5jbomi/image/upload/v1649035748/Assets%20For%20Ecom/Ribbons/bg-2_h3pysw.jpg"
-          alt="blue cloth"
-        />
         <div className="bannerContent text-center">
           <p>LIMITED TIME ONLY: IN STORES & ONLINE</p>
           <h1>60% OFF CLEARANCE</h1>
