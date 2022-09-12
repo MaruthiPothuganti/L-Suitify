@@ -40,14 +40,14 @@ const ProductListing = () => {
             className="dropDownBTN"
             onClick={() => setIsFiltersOpen((prev) => !prev)}
           >
-            <i class="fa-solid fa-chevron-up fa-2xl"></i>
+            <i class="fa-solid fa-chevron-left fa-2xl"></i>
           </button>
         ) : (
           <button
             className="dropDownBTN"
             onClick={() => setIsFiltersOpen((prev) => !prev)}
           >
-            <i class="fa-solid fa-chevron-down fa-2xl"></i>
+            <i class="fa-solid fa-chevron-right fa-2xl"></i>
           </button>
         )}
       </div>
