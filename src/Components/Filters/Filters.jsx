@@ -35,21 +35,23 @@ export const Filters = () => {
       </div>
       <div className="padding-v-l">
         <h2>Price Range</h2>
-        <input
-          type="range"
-          className="rangeFilter"
-          id="price-filter"
-          min="200"
-          max="10000"
-          step="1000"
-          defaultValue="10000"
-          onChange={(e) => {
-            filterDispatch({
-              type: PRICE_RANGE,
-              payload: e.target.value,
-            });
-          }}
-        />
+        <div>
+          <input
+            type="range"
+            className="rangeFilter"
+            id="price-filter"
+            min="200"
+            max="10000"
+            step="1000"
+            defaultValue="10000"
+            onChange={(e) => {
+              filterDispatch({
+                type: PRICE_RANGE,
+                payload: e.target.value,
+              });
+            }}
+          />
+        </div>
       </div>
       <div className="padding-v-l">
         <h2 className="">Category</h2>

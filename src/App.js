@@ -8,12 +8,14 @@ import { Orders } from "./Components/Orders/Orders";
 import { OrderSummary } from "./Pages/OrderSummary/OrderSummary";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
+import { PopupMenu } from './Components/PopupMenu/PopupMenu';
 
 function App() {
-
+  const [isHamMenuOpen, setIsHamMenu] = useState(false);
   return (
     <div className="App">
-      <Navbar />
+      <Navbar setIsHamMenu={ setIsHamMenu} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/ProductListing" element={<ProductListing />} />
@@ -27,7 +29,8 @@ function App() {
         </Route>
         <Route path="/OrderSummary" element={<RequireAuth><OrderSummary /></RequireAuth>} />
       </Routes>
-      <ToastContainer style={{ "fontSize":"1.5rem" }}/>
+      <ToastContainer style={{ "fontSize": "1.5rem" }} />
+      <PopupMenu show={isHamMenuOpen} handleClose={setIsHamMenu} />
     </div>
     );
 }
