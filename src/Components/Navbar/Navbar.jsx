@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { useWishlist } from "../../Context/WishlistContext";
 import { useCart } from "../../Context/CartContext";
-import { useState } from "react";
 
 export function Navbar({ setIsHamMenu }) {
   const { userAuthState } = useAuth();

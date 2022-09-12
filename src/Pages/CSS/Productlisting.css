@@ -1,3 +1,7 @@
+.products{
+    display: flex;
+}
+
 .product-container {
     gap: 10px;
 }
@@ -5,4 +9,27 @@
 .product-listing {
     margin: 1rem;
     flex-grow: 1;
+}
+
+.mobFilters{
+    display: none;
+    padding: 1rem;
+    border: 1px solid black;
+    margin: 2rem;
+}
+
+
+
+@media only screen and (max-width: 992px) {
+.products{
+    display: block;
+}
+.mobFilters{
+    display: flex;
+    justify-content: space-between;
+}
+.dropDownBTN{
+    background: transparent;
+    cursor: pointer;
+}
 }
