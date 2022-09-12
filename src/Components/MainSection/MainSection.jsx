@@ -7,11 +7,6 @@ export function Main() {
   return (
     <main>
       <div className="homeSectionOne">
-        <img
-          className="heroBanner"
-          src="https://res.cloudinary.com/doo5jbomi/image/upload/v1648878976/Assets%20For%20Ecom/ShowCasePics/Ecom_Home_rpg9g4.jpg"
-          alt="hero"
-        />
         <div className="heroTxtSection">
           <h1 className="heroHeading">All You need to make an Entrance</h1>
           <div>
